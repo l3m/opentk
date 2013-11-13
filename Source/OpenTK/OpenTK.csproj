@@ -459,9 +459,6 @@
     <Compile Include="Graphics\OpenGL\GLEnums.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Graphics\OpenGL\GLCore.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Graphics\OpenGL\GL.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -481,9 +478,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graphics\ES10\Delegates.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphics\ES10\Core.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graphics\ES11\ErrorHelper.cs">
@@ -783,19 +777,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graphics\OpenGL4\GL4.cs" />
-    <Compile Include="Graphics\OpenGL4\GL4Core.cs" />
     <Compile Include="Graphics\OpenGL4\GL4Delegates.cs" />
     <Compile Include="Graphics\OpenGL4\GL4Enums.cs" />
     <Compile Include="Graphics\ES30\ES30.cs" />
-    <Compile Include="Graphics\ES30\ES30Core.cs" />
     <Compile Include="Graphics\ES30\ES30Delegates.cs" />
     <Compile Include="Graphics\ES30\ES30Enums.cs" />
     <Compile Include="Graphics\ES20\ES20.cs" />
-    <Compile Include="Graphics\ES20\ES20Core.cs" />
     <Compile Include="Graphics\ES20\ES20Delegates.cs" />
     <Compile Include="Graphics\ES20\ES20Enums.cs" />
     <Compile Include="Graphics\ES11\ES11.cs" />
-    <Compile Include="Graphics\ES11\ES11Core.cs" />
     <Compile Include="Graphics\ES11\ES11Delegates.cs" />
     <Compile Include="Graphics\ES11\ES11Enums.cs" />
   </ItemGroup>
