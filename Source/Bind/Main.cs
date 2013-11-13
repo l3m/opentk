@@ -148,6 +148,12 @@ namespace Bind
                                     case "enums_in_class": settings |= Settings.Legacy.NestedEnums; break;
                                     case "nodocs": settings |= Settings.Legacy.NoDocumentation; break;
                                     case "keep_untyped_enums": settings |= Settings.Legacy.KeepUntypedEnums; break;
+                                    case "nodelegates": settings |= Bind.Settings.Legacy.NoDelegates; break;
+                                    case "noimports":
+                                    case "nostatic":
+                                    case "nostaticimports":
+                                        settings |= Bind.Settings.Legacy.NoStaticImports;
+                                        break;
                                 }
 
                                 if (enable)

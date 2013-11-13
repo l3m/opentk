@@ -154,6 +154,14 @@ namespace Bind
             KeepUntypedEnums = 0x1000,
             /// <summary>Marks deprecated functions as [Obsolete]</summary>
             AddDeprecationWarnings = 0x2000,
+            /// <summary>
+            /// Do not generate delegates
+            /// </summary>
+            NoDelegates = 0x4000,
+            /// <summary>
+            /// Do not generate static imports (DllImport)
+            /// </summary>
+            NoStaticImports = 0x8000,
             Tao = ConstIntEnums |
                   NoAdvancedEnumProcessing |
                   NoPublicUnsafeFunctions |
@@ -164,9 +172,9 @@ namespace Bind
                   NestedEnums |
                   NoBoolParameters |
                   NoDropMultipleTokens |
-                  NoDocumentation | 
-                  NoDebugHelpers
-                  /*GenerateAllPermutations,*/
+                  NoDocumentation |
+                  NoDebugHelpers,
+            /*GenerateAllPermutations,*/
         }
 
         // Returns true if flag is enabled.
