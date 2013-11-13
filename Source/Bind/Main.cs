@@ -158,11 +158,11 @@ namespace Bind
 
                                 if (enable)
                                 {
-                                    Settings.Compatibility |= settings;
+                                    Settings.Enable(settings);
                                 }
                                 else
                                 {
-                                    Settings.Compatibility &= ~settings;
+                                    Settings.Disable(settings);
                                 }
 
                                 break;

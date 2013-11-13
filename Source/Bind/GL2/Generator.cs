@@ -97,6 +97,7 @@ namespace Bind.GL2
             Settings.DefaultDelegatesFile = "GLDelegates.cs";
             Settings.DefaultEnumsFile = "GLEnums.cs";
             Settings.DefaultWrappersFile = "GL.cs";
+            Settings.DefaultCompatibility |= Bind.Settings.Legacy.NoStaticImports;
 
             Delegates = new DelegateCollection();
             Enums = new EnumCollection();

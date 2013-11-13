@@ -1207,6 +1207,42 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void BlitFramebuffer(Int32 srcX0, Int32 srcY0, Int32 srcX1, Int32 srcY1, Int32 dstX0, Int32 dstY0, Int32 dstX1, Int32 dstY1, OpenTK.Graphics.ES20.All mask, OpenTK.Graphics.ES20.All filter)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glBlitFramebufferANGLE((Int32)srcX0, (Int32)srcY0, (Int32)srcX1, (Int32)srcY1, (Int32)dstX0, (Int32)dstY0, (Int32)dstX1, (Int32)dstY1, (OpenTK.Graphics.ES20.ClearBufferMask)mask, (OpenTK.Graphics.ES20.BlitFramebufferFilter)filter);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_framebuffer_blit]
+            /// Copy a block of pixels from the read framebuffer to the draw framebuffer
+            /// </summary>
+            /// <param name="srcX0">
+            /// <para>
+            /// Specify the bounds of the source rectangle within the read buffer of the read framebuffer.
+            /// </para>
+            /// </param>
+            /// <param name="dstX0">
+            /// <para>
+            /// Specify the bounds of the destination rectangle within the write buffer of the write framebuffer.
+            /// </para>
+            /// </param>
+            /// <param name="mask">
+            /// <para>
+            /// The bitwise OR of the flags indicating which buffers are to be copied. The allowed flags are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT and GL_STENCIL_BUFFER_BIT.
+            /// </para>
+            /// </param>
+            /// <param name="filter">
+            /// <para>
+            /// Specifies the interpolation to be applied if the image is stretched. Must be GL_NEAREST or GL_LINEAR.
+            /// </para>
+            /// </param>
+            public static 
             void BlitFramebuffer(Int32 srcX0, Int32 srcY0, Int32 srcX1, Int32 srcY1, Int32 dstX0, Int32 dstY0, Int32 dstX1, Int32 dstY1, OpenTK.Graphics.ES20.ClearBufferMask mask, OpenTK.Graphics.ES20.BlitFramebufferFilter filter)
             {
                 #if DEBUG
@@ -1243,6 +1279,42 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void DrawArraysInstanced(OpenTK.Graphics.ES20.All mode, Int32 first, Int32 count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawArraysInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a range of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES GL_LINES_ADJACENCY, GL_LINE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY, GL_TRIANGLE_STRIP_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Specifies the starting index in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
             void DrawArraysInstanced(OpenTK.Graphics.ES20.PrimitiveType mode, Int32 first, Int32 count, Int32 primcount)
             {
                 #if DEBUG
@@ -1250,6 +1322,248 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDrawArraysInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawElementsInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedANGLE((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                    indices = (T3)indices_ptr.Target;
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
                 #if DEBUG
                 }
                 #endif
@@ -1640,6 +1954,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.All target, Int32 samples, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glRenderbufferStorageMultisampleANGLE((OpenTK.Graphics.ES20.RenderbufferTarget)target, (Int32)samples, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: ANGLE_framebuffer_multisample]
+            /// Establish data storage, format, dimensions and sample count of a renderbuffer object's image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="samples">
+            /// <para>
+            /// Specifies the number of samples to be used for the renderbuffer object's storage.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the internal format to use for the renderbuffer object's image.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            public static 
             void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 samples, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -1709,6 +2064,69 @@ namespace OpenTK.Graphics.ES20
 
         public static partial class Apple
         {
+            /// <summary>[requires: APPLE_sync]
+            /// Block and wait for a sync object to become signaled
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// The sync object whose status to wait on.
+            /// </para>
+            /// </param>
+            /// <param name="flags">
+            /// <para>
+            /// A bitfield controlling the command flushing behavior. flags may be GL_SYNC_FLUSH_COMMANDS_BIT.
+            /// </para>
+            /// </param>
+            /// <param name="timeout">
+            /// <para>
+            /// The timeout, specified in nanoseconds, for which the implementation should wait for sync to become signaled.
+            /// </para>
+            /// </param>
+            public static 
+            OpenTK.Graphics.ES20.WaitSyncStatus ClientWaitSync(IntPtr sync, OpenTK.Graphics.ES20.All flags, Int64 timeout)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glClientWaitSyncAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.ClientWaitSyncFlags)flags, (UInt64)timeout);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Block and wait for a sync object to become signaled
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// The sync object whose status to wait on.
+            /// </para>
+            /// </param>
+            /// <param name="flags">
+            /// <para>
+            /// A bitfield controlling the command flushing behavior. flags may be GL_SYNC_FLUSH_COMMANDS_BIT.
+            /// </para>
+            /// </param>
+            /// <param name="timeout">
+            /// <para>
+            /// The timeout, specified in nanoseconds, for which the implementation should wait for sync to become signaled.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            OpenTK.Graphics.ES20.WaitSyncStatus ClientWaitSync(IntPtr sync, OpenTK.Graphics.ES20.All flags, UInt64 timeout)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glClientWaitSyncAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.ClientWaitSyncFlags)flags, (UInt64)timeout);
+                #if DEBUG
+                }
+                #endif
+            }
+
             /// <summary>[requires: APPLE_sync]
             /// Block and wait for a sync object to become signaled
             /// </summary>
@@ -1836,6 +2254,32 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            IntPtr FenceSync(OpenTK.Graphics.ES20.All condition, OpenTK.Graphics.ES20.All flags)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glFenceSyncAPPLE((OpenTK.Graphics.ES20.SyncCondition)condition, (OpenTK.Graphics.ES20.WaitSyncFlags)flags);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Create a new sync object and insert it into the GL command stream
+            /// </summary>
+            /// <param name="condition">
+            /// <para>
+            /// Specifies the condition that must be met to set the sync object's state to signaled. condition must be GL_SYNC_GPU_COMMANDS_COMPLETE.
+            /// </para>
+            /// </param>
+            /// <param name="flags">
+            /// <para>
+            /// Specifies a bitwise combination of flags controlling the behavior of the sync object. No flags are presently defined for this operation and flags must be zero. flags is a placeholder for anticipated future extensions of fence sync object capabilities.
+            /// </para>
+            /// </param>
+            public static 
             IntPtr FenceSync(OpenTK.Graphics.ES20.SyncCondition condition, OpenTK.Graphics.ES20.WaitSyncFlags flags)
             {
                 #if DEBUG
@@ -1843,6 +2287,62 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 return Delegates.glFenceSyncAPPLE((OpenTK.Graphics.ES20.SyncCondition)condition, (OpenTK.Graphics.ES20.WaitSyncFlags)flags);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]</summary>
+            public static 
+            void GetInteger64(OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = @params)
+                    {
+                        Delegates.glGetInteger64vAPPLE((OpenTK.Graphics.ES20.GetPName)pname, (Int64*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]</summary>
+            public static 
+            void GetInteger64(OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int64 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = &@params)
+                    {
+                        Delegates.glGetInteger64vAPPLE((OpenTK.Graphics.ES20.GetPName)pname, (Int64*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetInteger64(OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetInteger64vAPPLE((OpenTK.Graphics.ES20.GetPName)pname, (Int64*)@params);
                 #if DEBUG
                 }
                 #endif
@@ -1899,6 +2399,146 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glGetInteger64vAPPLE((OpenTK.Graphics.ES20.GetPName)pname, (Int64*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Query the properties of a sync object
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// Specifies the sync object whose properties to query.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the parameter whose value to retrieve from the sync object specified in sync.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// Specifies the size of the buffer whose address is given in values.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies the address of an variable to receive the number of integers placed in values.
+            /// </para>
+            /// </param>
+            /// <param name="values">
+            /// <para>
+            /// Specifies the address of an array to receive the values of the queried parameter.
+            /// </para>
+            /// </param>
+            public static 
+            void GetSync(IntPtr sync, OpenTK.Graphics.ES20.All pname, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] Int32[] values)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = length)
+                    fixed (Int32* values_ptr = values)
+                    {
+                        Delegates.glGetSyncivAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.SyncParameterName)pname, (Int32)bufSize, (Int32*)length_ptr, (Int32*)values_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Query the properties of a sync object
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// Specifies the sync object whose properties to query.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the parameter whose value to retrieve from the sync object specified in sync.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// Specifies the size of the buffer whose address is given in values.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies the address of an variable to receive the number of integers placed in values.
+            /// </para>
+            /// </param>
+            /// <param name="values">
+            /// <para>
+            /// Specifies the address of an array to receive the values of the queried parameter.
+            /// </para>
+            /// </param>
+            public static 
+            void GetSync(IntPtr sync, OpenTK.Graphics.ES20.All pname, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] out Int32 values)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = &length)
+                    fixed (Int32* values_ptr = &values)
+                    {
+                        Delegates.glGetSyncivAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.SyncParameterName)pname, (Int32)bufSize, (Int32*)length_ptr, (Int32*)values_ptr);
+                        length = *length_ptr;
+                        values = *values_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Query the properties of a sync object
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// Specifies the sync object whose properties to query.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the parameter whose value to retrieve from the sync object specified in sync.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// Specifies the size of the buffer whose address is given in values.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies the address of an variable to receive the number of integers placed in values.
+            /// </para>
+            /// </param>
+            /// <param name="values">
+            /// <para>
+            /// Specifies the address of an array to receive the values of the queried parameter.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetSync(IntPtr sync, OpenTK.Graphics.ES20.All pname, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* values)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetSyncivAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.SyncParameterName)pname, (Int32)bufSize, (Int32*)length, (Int32*)values);
                 #if DEBUG
                 }
                 #endif
@@ -2094,6 +2734,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.All target, Int32 samples, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glRenderbufferStorageMultisampleAPPLE((OpenTK.Graphics.ES20.RenderbufferTarget)target, (Int32)samples, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_framebuffer_multisample]
+            /// Establish data storage, format, dimensions and sample count of a renderbuffer object's image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="samples">
+            /// <para>
+            /// Specifies the number of samples to be used for the renderbuffer object's storage.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the internal format to use for the renderbuffer object's image.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            public static 
             void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 samples, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -2115,6 +2796,69 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glResolveMultisampleFramebufferAPPLE();
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Instruct the GL server to block until the specified sync object becomes signaled
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// Specifies the sync object whose status to wait on.
+            /// </para>
+            /// </param>
+            /// <param name="flags">
+            /// <para>
+            /// A bitfield controlling the command flushing behavior. flags may be zero.
+            /// </para>
+            /// </param>
+            /// <param name="timeout">
+            /// <para>
+            /// Specifies the timeout that the server should wait before continuing. timeout must be GL_TIMEOUT_IGNORED.
+            /// </para>
+            /// </param>
+            public static 
+            void WaitSync(IntPtr sync, OpenTK.Graphics.ES20.All flags, Int64 timeout)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glWaitSyncAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.WaitSyncFlags)flags, (UInt64)timeout);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: APPLE_sync]
+            /// Instruct the GL server to block until the specified sync object becomes signaled
+            /// </summary>
+            /// <param name="sync">
+            /// <para>
+            /// Specifies the sync object whose status to wait on.
+            /// </para>
+            /// </param>
+            /// <param name="flags">
+            /// <para>
+            /// A bitfield controlling the command flushing behavior. flags may be zero.
+            /// </para>
+            /// </param>
+            /// <param name="timeout">
+            /// <para>
+            /// Specifies the timeout that the server should wait before continuing. timeout must be GL_TIMEOUT_IGNORED.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void WaitSync(IntPtr sync, OpenTK.Graphics.ES20.All flags, UInt64 timeout)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glWaitSyncAPPLE((IntPtr)sync, (OpenTK.Graphics.ES20.WaitSyncFlags)flags, (UInt64)timeout);
                 #if DEBUG
                 }
                 #endif
@@ -2183,6 +2927,27 @@ namespace OpenTK.Graphics.ES20
                 #endif
             }
 
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Select active texture unit
+        /// </summary>
+        /// <param name="texture">
+        /// <para>
+        /// Specifies which texture unit to make active. The number of texture units is implementation dependent, but must be at least 80. texture must be one of GL_TEXTUREi, where i ranges from 0 (GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS - 1). The initial value is GL_TEXTURE0.
+        /// </para>
+        /// </param>
+        public static 
+        void ActiveTexture(OpenTK.Graphics.ES20.All texture)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glActiveTexture((OpenTK.Graphics.ES20.TextureUnit)texture);
+            #if DEBUG
+            }
+            #endif
         }
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]
@@ -2336,6 +3101,59 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BindBuffer(OpenTK.Graphics.ES20.All target, Int32 buffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindBuffer((OpenTK.Graphics.ES20.BufferTarget)target, (UInt32)buffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a named buffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target to which the buffer object is bound. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="buffer">
+        /// <para>
+        /// Specifies the name of a buffer object.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void BindBuffer(OpenTK.Graphics.ES20.All target, UInt32 buffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindBuffer((OpenTK.Graphics.ES20.BufferTarget)target, (UInt32)buffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a named buffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target to which the buffer object is bound. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="buffer">
+        /// <para>
+        /// Specifies the name of a buffer object.
+        /// </para>
+        /// </param>
+        public static 
         void BindBuffer(OpenTK.Graphics.ES20.BufferTarget target, Int32 buffer)
         {
             #if DEBUG
@@ -2370,6 +3188,59 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glBindBuffer((OpenTK.Graphics.ES20.BufferTarget)target, (UInt32)buffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a framebuffer to a framebuffer target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the framebuffer target of the binding operation.
+        /// </para>
+        /// </param>
+        /// <param name="framebuffer">
+        /// <para>
+        /// Specifies the name of the framebuffer object to bind.
+        /// </para>
+        /// </param>
+        public static 
+        void BindFramebuffer(OpenTK.Graphics.ES20.All target, Int32 framebuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindFramebuffer((OpenTK.Graphics.ES20.FramebufferTarget)target, (UInt32)framebuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a framebuffer to a framebuffer target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the framebuffer target of the binding operation.
+        /// </para>
+        /// </param>
+        /// <param name="framebuffer">
+        /// <para>
+        /// Specifies the name of the framebuffer object to bind.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void BindFramebuffer(OpenTK.Graphics.ES20.All target, UInt32 framebuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindFramebuffer((OpenTK.Graphics.ES20.FramebufferTarget)target, (UInt32)framebuffer);
             #if DEBUG
             }
             #endif
@@ -2442,6 +3313,59 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BindRenderbuffer(OpenTK.Graphics.ES20.All target, Int32 renderbuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindRenderbuffer((OpenTK.Graphics.ES20.RenderbufferTarget)target, (UInt32)renderbuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a renderbuffer to a renderbuffer target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the renderbuffer target of the binding operation. target must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffer">
+        /// <para>
+        /// Specifies the name of the renderbuffer object to bind.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void BindRenderbuffer(OpenTK.Graphics.ES20.All target, UInt32 renderbuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindRenderbuffer((OpenTK.Graphics.ES20.RenderbufferTarget)target, (UInt32)renderbuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a renderbuffer to a renderbuffer target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the renderbuffer target of the binding operation. target must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffer">
+        /// <para>
+        /// Specifies the name of the renderbuffer object to bind.
+        /// </para>
+        /// </param>
+        public static 
         void BindRenderbuffer(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 renderbuffer)
         {
             #if DEBUG
@@ -2476,6 +3400,59 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glBindRenderbuffer((OpenTK.Graphics.ES20.RenderbufferTarget)target, (UInt32)renderbuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a named texture to a texturing target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target to which the texture is bound. Must be one of GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_BUFFER, GL_TEXTURE_2D_MULTISAMPLE or GL_TEXTURE_2D_MULTISAMPLE_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="texture">
+        /// <para>
+        /// Specifies the name of a texture.
+        /// </para>
+        /// </param>
+        public static 
+        void BindTexture(OpenTK.Graphics.ES20.All target, Int32 texture)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindTexture((OpenTK.Graphics.ES20.TextureTarget)target, (UInt32)texture);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Bind a named texture to a texturing target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target to which the texture is bound. Must be one of GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_BUFFER, GL_TEXTURE_2D_MULTISAMPLE or GL_TEXTURE_2D_MULTISAMPLE_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="texture">
+        /// <para>
+        /// Specifies the name of a texture.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void BindTexture(OpenTK.Graphics.ES20.All target, UInt32 texture)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBindTexture((OpenTK.Graphics.ES20.TextureTarget)target, (UInt32)texture);
             #if DEBUG
             }
             #endif
@@ -2569,6 +3546,32 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BlendEquation(OpenTK.Graphics.ES20.All mode)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBlendEquation((OpenTK.Graphics.ES20.BlendEquationMode)mode);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify the equation used for both the RGB blend equation and the Alpha blend equation
+        /// </summary>
+        /// <param name="buf">
+        /// <para>
+        /// for glBlendEquationi, specifies the index of the draw buffer for which to set the blend equation.
+        /// </para>
+        /// </param>
+        /// <param name="mode">
+        /// <para>
+        /// specifies how source and destination colors are combined. It must be GL_FUNC_ADD, GL_FUNC_SUBTRACT, GL_FUNC_REVERSE_SUBTRACT, GL_MIN, GL_MAX.
+        /// </para>
+        /// </param>
+        public static 
         void BlendEquation(OpenTK.Graphics.ES20.BlendEquationMode mode)
         {
             #if DEBUG
@@ -2600,6 +3603,37 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BlendEquationSeparate(OpenTK.Graphics.ES20.All modeRGB, OpenTK.Graphics.ES20.All modeAlpha)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBlendEquationSeparate((OpenTK.Graphics.ES20.BlendEquationMode)modeRGB, (OpenTK.Graphics.ES20.BlendEquationMode)modeAlpha);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set the RGB blend equation and the alpha blend equation separately
+        /// </summary>
+        /// <param name="buf">
+        /// <para>
+        /// for glBlendEquationSeparatei, specifies the index of the draw buffer for which to set the blend equations.
+        /// </para>
+        /// </param>
+        /// <param name="modeRGB">
+        /// <para>
+        /// specifies the RGB blend equation, how the red, green, and blue components of the source and destination colors are combined. It must be GL_FUNC_ADD, GL_FUNC_SUBTRACT, GL_FUNC_REVERSE_SUBTRACT, GL_MIN, GL_MAX.
+        /// </para>
+        /// </param>
+        /// <param name="modeAlpha">
+        /// <para>
+        /// specifies the alpha blend equation, how the alpha component of the source and destination colors are combined. It must be GL_FUNC_ADD, GL_FUNC_SUBTRACT, GL_FUNC_REVERSE_SUBTRACT, GL_MIN, GL_MAX.
+        /// </para>
+        /// </param>
+        public static 
         void BlendEquationSeparate(OpenTK.Graphics.ES20.BlendEquationMode modeRGB, OpenTK.Graphics.ES20.BlendEquationMode modeAlpha)
         {
             #if DEBUG
@@ -2607,6 +3641,37 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glBlendEquationSeparate((OpenTK.Graphics.ES20.BlendEquationMode)modeRGB, (OpenTK.Graphics.ES20.BlendEquationMode)modeAlpha);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify pixel arithmetic
+        /// </summary>
+        /// <param name="buf">
+        /// <para>
+        /// For glBlendFunci, specifies the index of the draw buffer for which to set the blend function.
+        /// </para>
+        /// </param>
+        /// <param name="sfactor">
+        /// <para>
+        /// Specifies how the red, green, blue, and alpha source blending factors are computed. The initial value is GL_ONE.
+        /// </para>
+        /// </param>
+        /// <param name="dfactor">
+        /// <para>
+        /// Specifies how the red, green, blue, and alpha destination blending factors are computed. The following symbolic constants are accepted: GL_ZERO, GL_ONE, GL_SRC_COLOR, GL_ONE_MINUS_SRC_COLOR, GL_DST_COLOR, GL_ONE_MINUS_DST_COLOR, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_DST_ALPHA, GL_ONE_MINUS_DST_ALPHA. GL_CONSTANT_COLOR, GL_ONE_MINUS_CONSTANT_COLOR, GL_CONSTANT_ALPHA, and GL_ONE_MINUS_CONSTANT_ALPHA. The initial value is GL_ZERO.
+        /// </para>
+        /// </param>
+        public static 
+        void BlendFunc(OpenTK.Graphics.ES20.All sfactor, OpenTK.Graphics.ES20.All dfactor)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBlendFunc((OpenTK.Graphics.ES20.BlendingFactorSrc)sfactor, (OpenTK.Graphics.ES20.BlendingFactorDest)dfactor);
             #if DEBUG
             }
             #endif
@@ -2672,6 +3737,47 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BlendFuncSeparate(OpenTK.Graphics.ES20.All sfactorRGB, OpenTK.Graphics.ES20.All dfactorRGB, OpenTK.Graphics.ES20.All sfactorAlpha, OpenTK.Graphics.ES20.All dfactorAlpha)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBlendFuncSeparate((OpenTK.Graphics.ES20.BlendingFactorSrc)sfactorRGB, (OpenTK.Graphics.ES20.BlendingFactorDest)dfactorRGB, (OpenTK.Graphics.ES20.BlendingFactorSrc)sfactorAlpha, (OpenTK.Graphics.ES20.BlendingFactorDest)dfactorAlpha);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify pixel arithmetic for RGB and alpha components separately
+        /// </summary>
+        /// <param name="buf">
+        /// <para>
+        /// For glBlendFuncSeparatei, specifies the index of the draw buffer for which to set the blend functions.
+        /// </para>
+        /// </param>
+        /// <param name="srcRGB">
+        /// <para>
+        /// Specifies how the red, green, and blue blending factors are computed. The initial value is GL_ONE.
+        /// </para>
+        /// </param>
+        /// <param name="dstRGB">
+        /// <para>
+        /// Specifies how the red, green, and blue destination blending factors are computed. The initial value is GL_ZERO.
+        /// </para>
+        /// </param>
+        /// <param name="srcAlpha">
+        /// <para>
+        /// Specified how the alpha source blending factor is computed. The initial value is GL_ONE.
+        /// </para>
+        /// </param>
+        /// <param name="dstAlpha">
+        /// <para>
+        /// Specified how the alpha destination blending factor is computed. The initial value is GL_ZERO.
+        /// </para>
+        /// </param>
+        public static 
         void BlendFuncSeparate(OpenTK.Graphics.ES20.BlendingFactorSrc sfactorRGB, OpenTK.Graphics.ES20.BlendingFactorDest dfactorRGB, OpenTK.Graphics.ES20.BlendingFactorSrc sfactorAlpha, OpenTK.Graphics.ES20.BlendingFactorDest dfactorAlpha)
         {
             #if DEBUG
@@ -2679,6 +3785,223 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glBlendFuncSeparate((OpenTK.Graphics.ES20.BlendingFactorSrc)sfactorRGB, (OpenTK.Graphics.ES20.BlendingFactorDest)dfactorRGB, (OpenTK.Graphics.ES20.BlendingFactorSrc)sfactorAlpha, (OpenTK.Graphics.ES20.BlendingFactorDest)dfactorAlpha);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates and initializes a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the buffer object's new data store.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="usage">
+        /// <para>
+        /// Specifies the expected usage pattern of the data store. The symbolic constant must be GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferData(OpenTK.Graphics.ES20.All target, IntPtr size, IntPtr data, OpenTK.Graphics.ES20.All usage)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBufferData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)size, (IntPtr)data, (OpenTK.Graphics.ES20.BufferUsageHint)usage);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates and initializes a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the buffer object's new data store.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="usage">
+        /// <para>
+        /// Specifies the expected usage pattern of the data store. The symbolic constant must be GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferData<T2>(OpenTK.Graphics.ES20.All target, IntPtr size, [InAttribute, OutAttribute] T2[] data, OpenTK.Graphics.ES20.All usage)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject(), (OpenTK.Graphics.ES20.BufferUsageHint)usage);
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates and initializes a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the buffer object's new data store.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="usage">
+        /// <para>
+        /// Specifies the expected usage pattern of the data store. The symbolic constant must be GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferData<T2>(OpenTK.Graphics.ES20.All target, IntPtr size, [InAttribute, OutAttribute] T2[,] data, OpenTK.Graphics.ES20.All usage)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject(), (OpenTK.Graphics.ES20.BufferUsageHint)usage);
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates and initializes a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the buffer object's new data store.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="usage">
+        /// <para>
+        /// Specifies the expected usage pattern of the data store. The symbolic constant must be GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferData<T2>(OpenTK.Graphics.ES20.All target, IntPtr size, [InAttribute, OutAttribute] T2[,,] data, OpenTK.Graphics.ES20.All usage)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject(), (OpenTK.Graphics.ES20.BufferUsageHint)usage);
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates and initializes a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the buffer object's new data store.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="usage">
+        /// <para>
+        /// Specifies the expected usage pattern of the data store. The symbolic constant must be GL_STREAM_DRAW, GL_STREAM_READ, GL_STREAM_COPY, GL_STATIC_DRAW, GL_STATIC_READ, GL_STATIC_COPY, GL_DYNAMIC_DRAW, GL_DYNAMIC_READ, or GL_DYNAMIC_COPY.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferData<T2>(OpenTK.Graphics.ES20.All target, IntPtr size, [InAttribute, OutAttribute] ref T2 data, OpenTK.Graphics.ES20.All usage)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject(), (OpenTK.Graphics.ES20.BufferUsageHint)usage);
+                data = (T2)data_ptr.Target;
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -3142,6 +4465,223 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void BufferSubData(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr size, IntPtr data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glBufferSubData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)size, (IntPtr)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Updates a subset of a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="offset">
+        /// <para>
+        /// Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the data store region being replaced.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the new data that will be copied into the data store.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferSubData<T3>(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr size, [InAttribute, OutAttribute] T3[] data)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferSubData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Updates a subset of a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="offset">
+        /// <para>
+        /// Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the data store region being replaced.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the new data that will be copied into the data store.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferSubData<T3>(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr size, [InAttribute, OutAttribute] T3[,] data)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferSubData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Updates a subset of a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="offset">
+        /// <para>
+        /// Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the data store region being replaced.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the new data that will be copied into the data store.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferSubData<T3>(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr size, [InAttribute, OutAttribute] T3[,,] data)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferSubData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Updates a subset of a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="offset">
+        /// <para>
+        /// Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the data store region being replaced.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the new data that will be copied into the data store.
+        /// </para>
+        /// </param>
+        public static 
+        void BufferSubData<T3>(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr size, [InAttribute, OutAttribute] ref T3 data)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glBufferSubData((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)size, (IntPtr)data_ptr.AddrOfPinnedObject());
+                data = (T3)data_ptr.Target;
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Updates a subset of a buffer object's data store
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ATOMIC_COUNTER_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="offset">
+        /// <para>
+        /// Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the size in bytes of the data store region being replaced.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the new data that will be copied into the data store.
+        /// </para>
+        /// </param>
+        public static 
         void BufferSubData(OpenTK.Graphics.ES20.BufferTarget target, IntPtr offset, IntPtr size, IntPtr data)
         {
             #if DEBUG
@@ -3344,6 +4884,27 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        OpenTK.Graphics.ES20.FramebufferErrorCode CheckFramebufferStatus(OpenTK.Graphics.ES20.All target)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            return Delegates.glCheckFramebufferStatus((OpenTK.Graphics.ES20.FramebufferTarget)target);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Check the completeness status of a framebuffer
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specify the target of the framebuffer completeness check.
+        /// </para>
+        /// </param>
+        public static 
         OpenTK.Graphics.ES20.FramebufferErrorCode CheckFramebufferStatus(OpenTK.Graphics.ES20.FramebufferTarget target)
         {
             #if DEBUG
@@ -3351,6 +4912,27 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             return Delegates.glCheckFramebufferStatus((OpenTK.Graphics.ES20.FramebufferTarget)target);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Clear buffers to preset values
+        /// </summary>
+        /// <param name="mask">
+        /// <para>
+        /// Bitwise OR of masks that indicate the buffers to be cleared. The three masks are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, and GL_STENCIL_BUFFER_BIT.
+        /// </para>
+        /// </param>
+        public static 
+        void Clear(OpenTK.Graphics.ES20.All mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glClear((OpenTK.Graphics.ES20.ClearBufferMask)mask);
             #if DEBUG
             }
             #endif
@@ -3504,6 +5086,323 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glCompileShader((UInt32)shader);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels high.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexImage2D(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 border, Int32 imageSize, IntPtr data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels high.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexImage2D<T7>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T7[] data)
+            where T7 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels high.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexImage2D<T7>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T7[,] data)
+            where T7 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels high.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexImage2D<T7>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T7[,,] data)
+            where T7 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image. All implementations support 2D texture and cube map texture images that are at least 16384 texels high.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexImage2D<T7>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] ref T7 data)
+            where T7 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                data = (T7)data_ptr.Target;
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -4133,6 +6032,348 @@ namespace OpenTK.Graphics.ES20
             {
                 Delegates.glCompressedTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
                 data = (T7)data_ptr.Target;
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexSubImage2D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, Int32 imageSize, IntPtr data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glCompressedTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (Int32)imageSize, (IntPtr)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T8[] data)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T8[,] data)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T8[,,] data)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                data_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage in a compressed format
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the compressed image data stored at address data.
+        /// </para>
+        /// </param>
+        /// <param name="imageSize">
+        /// <para>
+        /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the compressed image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void CompressedTexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] ref T8 data)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glCompressedTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                data = (T8)data_ptr.Target;
             }
             finally
             {
@@ -4866,6 +7107,57 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void CopyTexImage2D(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 x, Int32 y, Int32 width, Int32 height, Int32 border)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glCopyTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.TextureCopyComponentCount)internalformat, (Int32)x, (Int32)y, (Int32)width, (Int32)height, (Int32)border);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Copy pixels into a 2D texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, or GL_TEXTURE_CUBE_MAP_NEGATIVE_Z.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the internal format of the texture. Must be one of the following symbolic constants: GL_COMPRESSED_RED, GL_COMPRESSED_RG, GL_COMPRESSED_RGB, GL_COMPRESSED_RGBA. GL_COMPRESSED_SRGB, GL_COMPRESSED_SRGB_ALPHA. GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT24, GL_DEPTH_COMPONENT32, GL_STENCIL_INDEX8, GL_RED, GL_RG, GL_RGB, GL_R3_G3_B2, GL_RGB4, GL_RGB5, GL_RGB8, GL_RGB10, GL_RGB12, GL_RGB16, GL_RGBA, GL_RGBA2, GL_RGBA4, GL_RGB5_A1, GL_RGBA8, GL_RGB10_A2, GL_RGBA12, GL_RGBA16, GL_SRGB, GL_SRGB8, GL_SRGB_ALPHA, or GL_SRGB8_ALPHA8.
+        /// </para>
+        /// </param>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// Must be 0.
+        /// </para>
+        /// </param>
+        public static 
         void CopyTexImage2D(OpenTK.Graphics.ES20.TextureTarget target, Int32 level, OpenTK.Graphics.ES20.PixelInternalFormat internalformat, Int32 x, Int32 y, Int32 width, Int32 height, Int32 border)
         {
             #if DEBUG
@@ -4924,6 +7216,57 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glCopyTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (OpenTK.Graphics.ES20.TextureCopyComponentCount)internalformat, (Int32)x, (Int32)y, (Int32)width, (Int32)height, (Int32)border);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Copy a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        public static 
+        void CopyTexSubImage2D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 x, Int32 y, Int32 width, Int32 height)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glCopyTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)x, (Int32)y, (Int32)width, (Int32)height);
             #if DEBUG
             }
             #endif
@@ -5056,6 +7399,27 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        Int32 CreateShader(OpenTK.Graphics.ES20.All type)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            return Delegates.glCreateShader((OpenTK.Graphics.ES20.ShaderType)type);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Creates a shader object
+        /// </summary>
+        /// <param name="shaderType">
+        /// <para>
+        /// Specifies the type of shader to be created. Must be one of GL_COMPUTE_SHADER, GL_VERTEX_SHADER, GL_TESS_CONTROL_SHADER, GL_TESS_EVALUATION_SHADER, GL_GEOMETRY_SHADER, or GL_FRAGMENT_SHADER.
+        /// </para>
+        /// </param>
+        public static 
         Int32 CreateShader(OpenTK.Graphics.ES20.ShaderType type)
         {
             #if DEBUG
@@ -5063,6 +7427,27 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             return Delegates.glCreateShader((OpenTK.Graphics.ES20.ShaderType)type);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify whether front- or back-facing facets can be culled
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies whether front- or back-facing facets are candidates for culling. Symbolic constants GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK are accepted. The initial value is GL_BACK.
+        /// </para>
+        /// </param>
+        public static 
+        void CullFace(OpenTK.Graphics.ES20.All mode)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glCullFace((OpenTK.Graphics.ES20.CullFaceMode)mode);
             #if DEBUG
             }
             #endif
@@ -5251,6 +7636,310 @@ namespace OpenTK.Graphics.ES20
             {
                 userParam_ptr.Free();
             }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        public static 
+        void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, Int32[] ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* ids_ptr = ids)
+                {
+                    Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        public static 
+        void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, ref Int32 ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* ids_ptr = &ids)
+                {
+                    Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, Int32* ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids, (bool)enabled);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, UInt32[] ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* ids_ptr = ids)
+                {
+                    Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, ref UInt32 ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* ids_ptr = &ids)
+                {
+                    Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Control the reporting of debug messages in a debug context
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of debug messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// The length of the array ids.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+        /// </para>
+        /// </param>
+        /// <param name="enabled">
+        /// <para>
+        /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, UInt32* ids, bool enabled)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids, (bool)enabled);
             #if DEBUG
             }
             #endif
@@ -5555,6 +8244,99 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glDebugMessageControl((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids, (bool)enabled);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Inject an application-supplied message into the debug message queue
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of the debug message to insert.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of the debug message insert.
+        /// </para>
+        /// </param>
+        /// <param name="id">
+        /// <para>
+        /// The user-supplied identifier of the message to insert.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of the debug messages to insert.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The length string contained in the character array whose address is given by message.
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// <para>
+        /// The address of a character array containing the message to insert.
+        /// </para>
+        /// </param>
+        public static 
+        void DebugMessageInsert(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, Int32 id, OpenTK.Graphics.ES20.All severity, Int32 length, String buf)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDebugMessageInsert((OpenTK.Graphics.ES20.DebugSourceExternal)source, (OpenTK.Graphics.ES20.DebugType)type, (UInt32)id, (OpenTK.Graphics.ES20.DebugSeverity)severity, (Int32)length, (String)buf);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Inject an application-supplied message into the debug message queue
+        /// </summary>
+        /// <param name="source">
+        /// <para>
+        /// The source of the debug message to insert.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// The type of the debug message insert.
+        /// </para>
+        /// </param>
+        /// <param name="id">
+        /// <para>
+        /// The user-supplied identifier of the message to insert.
+        /// </para>
+        /// </param>
+        /// <param name="severity">
+        /// <para>
+        /// The severity of the debug messages to insert.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The length string contained in the character array whose address is given by message.
+        /// </para>
+        /// </param>
+        /// <param name="message">
+        /// <para>
+        /// The address of a character array containing the message to insert.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void DebugMessageInsert(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, UInt32 id, OpenTK.Graphics.ES20.All severity, Int32 length, String buf)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDebugMessageInsert((OpenTK.Graphics.ES20.DebugSourceExternal)source, (OpenTK.Graphics.ES20.DebugType)type, (UInt32)id, (OpenTK.Graphics.ES20.DebugSeverity)severity, (Int32)length, (String)buf);
             #if DEBUG
             }
             #endif
@@ -6736,6 +9518,27 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void DepthFunc(OpenTK.Graphics.ES20.All func)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDepthFunc((OpenTK.Graphics.ES20.DepthFunction)func);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify the value used for depth buffer comparisons
+        /// </summary>
+        /// <param name="func">
+        /// <para>
+        /// Specifies the depth comparison function. Symbolic constants GL_NEVER, GL_LESS, GL_EQUAL, GL_LEQUAL, GL_GREATER, GL_NOTEQUAL, GL_GEQUAL, and GL_ALWAYS are accepted. The initial value is GL_LESS.
+        /// </para>
+        /// </param>
+        public static 
         void DepthFunc(OpenTK.Graphics.ES20.DepthFunction func)
         {
             #if DEBUG
@@ -6850,6 +9653,20 @@ namespace OpenTK.Graphics.ES20
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
         public static 
+        void Disable(OpenTK.Graphics.ES20.All cap)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDisable((OpenTK.Graphics.ES20.EnableCap)cap);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
         void Disable(OpenTK.Graphics.ES20.EnableCap cap)
         {
             #if DEBUG
@@ -6886,6 +9703,37 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glDisableVertexAttribArray((UInt32)index);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="first">
+        /// <para>
+        /// Specifies the starting index in the enabled arrays.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of indices to be rendered.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawArrays(OpenTK.Graphics.ES20.All mode, Int32 first, Int32 count)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDrawArrays((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count);
             #if DEBUG
             }
             #endif
@@ -6948,6 +9796,223 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glDrawArrays((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of elements to be rendered.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+        /// </para>
+        /// </param>
+        /// <param name="indices">
+        /// <para>
+        /// Specifies a pointer to the location where the indices are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawElements(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, IntPtr indices)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glDrawElements((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of elements to be rendered.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+        /// </para>
+        /// </param>
+        /// <param name="indices">
+        /// <para>
+        /// Specifies a pointer to the location where the indices are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glDrawElements((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                indices_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of elements to be rendered.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+        /// </para>
+        /// </param>
+        /// <param name="indices">
+        /// <para>
+        /// Specifies a pointer to the location where the indices are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glDrawElements((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                indices_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of elements to be rendered.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+        /// </para>
+        /// </param>
+        /// <param name="indices">
+        /// <para>
+        /// Specifies a pointer to the location where the indices are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glDrawElements((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                indices_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Render primitives from array data
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of elements to be rendered.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+        /// </para>
+        /// </param>
+        /// <param name="indices">
+        /// <para>
+        /// Specifies a pointer to the location where the indices are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void DrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glDrawElements((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject());
+                indices = (T3)indices_ptr.Target;
+            }
+            finally
+            {
+                indices_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -7401,6 +10466,32 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void Enable(OpenTK.Graphics.ES20.All cap)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glEnable((OpenTK.Graphics.ES20.EnableCap)cap);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Enable or disable server-side GL capabilities
+        /// </summary>
+        /// <param name="cap">
+        /// <para>
+        /// Specifies a symbolic constant indicating a GL capability.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the switch to disable (for glEnablei and glDisablei only).
+        /// </para>
+        /// </param>
+        public static 
         void Enable(OpenTK.Graphics.ES20.EnableCap cap)
         {
             #if DEBUG
@@ -7512,6 +10603,79 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void FramebufferRenderbuffer(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All renderbuffertarget, Int32 renderbuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glFramebufferRenderbuffer((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.FramebufferSlot)attachment, (OpenTK.Graphics.ES20.RenderbufferTarget)renderbuffertarget, (UInt32)renderbuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Attach a renderbuffer as a logical buffer to the currently bound framebuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the framebuffer target. target must be GL_DRAW_FRAMEBUFFER, GL_READ_FRAMEBUFFER, or GL_FRAMEBUFFER. GL_FRAMEBUFFER is equivalent to GL_DRAW_FRAMEBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="attachment">
+        /// <para>
+        /// Specifies the attachment point of the framebuffer.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffertarget">
+        /// <para>
+        /// Specifies the renderbuffer target and must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffer">
+        /// <para>
+        /// Specifies the name of an existing renderbuffer object of type renderbuffertarget to attach.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void FramebufferRenderbuffer(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All renderbuffertarget, UInt32 renderbuffer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glFramebufferRenderbuffer((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.FramebufferSlot)attachment, (OpenTK.Graphics.ES20.RenderbufferTarget)renderbuffertarget, (UInt32)renderbuffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Attach a renderbuffer as a logical buffer to the currently bound framebuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the framebuffer target. target must be GL_DRAW_FRAMEBUFFER, GL_READ_FRAMEBUFFER, or GL_FRAMEBUFFER. GL_FRAMEBUFFER is equivalent to GL_DRAW_FRAMEBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="attachment">
+        /// <para>
+        /// Specifies the attachment point of the framebuffer.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffertarget">
+        /// <para>
+        /// Specifies the renderbuffer target and must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="renderbuffer">
+        /// <para>
+        /// Specifies the name of an existing renderbuffer object of type renderbuffertarget to attach.
+        /// </para>
+        /// </param>
+        public static 
         void FramebufferRenderbuffer(OpenTK.Graphics.ES20.FramebufferTarget target, OpenTK.Graphics.ES20.FramebufferSlot attachment, OpenTK.Graphics.ES20.RenderbufferTarget renderbuffertarget, Int32 renderbuffer)
         {
             #if DEBUG
@@ -7563,6 +10727,35 @@ namespace OpenTK.Graphics.ES20
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
         public static 
+        void FramebufferTexture2D(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All textarget, Int32 texture, Int32 level)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glFramebufferTexture2D((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.FramebufferSlot)attachment, (OpenTK.Graphics.ES20.TextureTarget2d)textarget, (UInt32)texture, (Int32)level);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        [System.CLSCompliant(false)]
+        public static 
+        void FramebufferTexture2D(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All textarget, UInt32 texture, Int32 level)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glFramebufferTexture2D((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.FramebufferSlot)attachment, (OpenTK.Graphics.ES20.TextureTarget2d)textarget, (UInt32)texture, (Int32)level);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
         void FramebufferTexture2D(OpenTK.Graphics.ES20.FramebufferTarget target, OpenTK.Graphics.ES20.FramebufferSlot attachment, OpenTK.Graphics.ES20.TextureTarget2d textarget, Int32 texture, Int32 level)
         {
             #if DEBUG
@@ -7585,6 +10778,27 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glFramebufferTexture2D((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.FramebufferSlot)attachment, (OpenTK.Graphics.ES20.TextureTarget2d)textarget, (UInt32)texture, (Int32)level);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define front- and back-facing polygons
+        /// </summary>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies the orientation of front-facing polygons. GL_CW and GL_CCW are accepted. The initial value is GL_CCW.
+        /// </para>
+        /// </param>
+        public static 
+        void FrontFace(OpenTK.Graphics.ES20.All mode)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glFrontFace((OpenTK.Graphics.ES20.FrontFaceDirection)mode);
             #if DEBUG
             }
             #endif
@@ -7825,6 +11039,27 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGenBuffers((Int32)n, (UInt32*)buffers);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Generate mipmaps for a specified texture target
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target to which the texture whose mimaps to generate is bound. target must be GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        public static 
+        void GenerateMipmap(OpenTK.Graphics.ES20.All target)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGenerateMipmap((OpenTK.Graphics.ES20.TextureTarget)target);
             #if DEBUG
             }
             #endif
@@ -8608,9 +11843,123 @@ namespace OpenTK.Graphics.ES20
         /// Returns a null terminated string containing the name of the attribute variable.
         /// </para>
         /// </param>
+        public static 
+        void GetActiveAttrib(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] out Int32 size, [OutAttribute] out OpenTK.Graphics.ES20.All type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                fixed (Int32* size_ptr = &size)
+                fixed (OpenTK.Graphics.ES20.All* type_ptr = &type)
+                {
+                    Delegates.glGetActiveAttrib((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length_ptr, (Int32*)size_ptr, (OpenTK.Graphics.ES20.ActiveAttribType*)type_ptr, (StringBuilder)name);
+                    length = *length_ptr;
+                    size = *size_ptr;
+                    type = *type_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active attribute variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the attribute variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the attribute variable.
+        /// </para>
+        /// </param>
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetActiveAttrib(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.ActiveAttribType* type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetActiveAttrib((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length, (Int32*)size, (OpenTK.Graphics.ES20.ActiveAttribType*)type, (StringBuilder)name);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active attribute variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the attribute variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the attribute variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetActiveAttrib(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.All* type, [OutAttribute] StringBuilder name)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -8725,7 +12074,122 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         [System.CLSCompliant(false)]
         public static 
+        void GetActiveAttrib(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] out Int32 size, [OutAttribute] out OpenTK.Graphics.ES20.All type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                fixed (Int32* size_ptr = &size)
+                fixed (OpenTK.Graphics.ES20.All* type_ptr = &type)
+                {
+                    Delegates.glGetActiveAttrib((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length_ptr, (Int32*)size_ptr, (OpenTK.Graphics.ES20.ActiveAttribType*)type_ptr, (StringBuilder)name);
+                    length = *length_ptr;
+                    size = *size_ptr;
+                    type = *type_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active attribute variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the attribute variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the attribute variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
         unsafe void GetActiveAttrib(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.ActiveAttribType* type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetActiveAttrib((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length, (Int32*)size, (OpenTK.Graphics.ES20.ActiveAttribType*)type, (StringBuilder)name);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active attribute variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the attribute variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the attribute variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the attribute variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetActiveAttrib(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.All* type, [OutAttribute] StringBuilder name)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -8837,9 +12301,123 @@ namespace OpenTK.Graphics.ES20
         /// Returns a null terminated string containing the name of the uniform variable.
         /// </para>
         /// </param>
+        public static 
+        void GetActiveUniform(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] out Int32 size, [OutAttribute] out OpenTK.Graphics.ES20.All type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                fixed (Int32* size_ptr = &size)
+                fixed (OpenTK.Graphics.ES20.All* type_ptr = &type)
+                {
+                    Delegates.glGetActiveUniform((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length_ptr, (Int32*)size_ptr, (OpenTK.Graphics.ES20.ActiveUniformType*)type_ptr, (StringBuilder)name);
+                    length = *length_ptr;
+                    size = *size_ptr;
+                    type = *type_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active uniform variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the uniform variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the uniform variable.
+        /// </para>
+        /// </param>
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetActiveUniform(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.ActiveUniformType* type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetActiveUniform((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length, (Int32*)size, (OpenTK.Graphics.ES20.ActiveUniformType*)type, (StringBuilder)name);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active uniform variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the uniform variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the uniform variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetActiveUniform(Int32 program, Int32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.All* type, [OutAttribute] StringBuilder name)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -8954,7 +12532,122 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         [System.CLSCompliant(false)]
         public static 
+        void GetActiveUniform(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] out Int32 size, [OutAttribute] out OpenTK.Graphics.ES20.All type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                fixed (Int32* size_ptr = &size)
+                fixed (OpenTK.Graphics.ES20.All* type_ptr = &type)
+                {
+                    Delegates.glGetActiveUniform((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length_ptr, (Int32*)size_ptr, (OpenTK.Graphics.ES20.ActiveUniformType*)type_ptr, (StringBuilder)name);
+                    length = *length_ptr;
+                    size = *size_ptr;
+                    type = *type_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active uniform variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the uniform variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the uniform variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
         unsafe void GetActiveUniform(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.ActiveUniformType* type, [OutAttribute] StringBuilder name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetActiveUniform((UInt32)program, (UInt32)index, (Int32)bufSize, (Int32*)length, (Int32*)size, (OpenTK.Graphics.ES20.ActiveUniformType*)type, (StringBuilder)name);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns information about an active uniform variable for the specified program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the uniform variable to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Returns the size of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Returns the data type of the uniform variable.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// Returns a null terminated string containing the name of the uniform variable.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetActiveUniform(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] Int32* size, [OutAttribute] OpenTK.Graphics.ES20.All* type, [OutAttribute] StringBuilder name)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -9275,6 +12968,26 @@ namespace OpenTK.Graphics.ES20
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
         public static 
+        bool GetBoolean(OpenTK.Graphics.ES20.All pname)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                bool retval;
+                bool* data_ptr = &retval;
+                Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data_ptr);
+                return retval;
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
         bool GetBoolean(OpenTK.Graphics.ES20.GetPName pname)
         {
             #if DEBUG
@@ -9288,6 +13001,62 @@ namespace OpenTK.Graphics.ES20
                 Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data_ptr);
                 return retval;
             }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetBoolean(OpenTK.Graphics.ES20.All pname, [OutAttribute] bool[] data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (bool* data_ptr = data)
+                {
+                    Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetBoolean(OpenTK.Graphics.ES20.All pname, [OutAttribute] out bool data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (bool* data_ptr = &data)
+                {
+                    Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data_ptr);
+                    data = *data_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetBoolean(OpenTK.Graphics.ES20.All pname, [OutAttribute] bool* data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data);
             #if DEBUG
             }
             #endif
@@ -9344,6 +13113,113 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetBooleanv((OpenTK.Graphics.ES20.GetPName)pname, (bool*)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return parameters of a buffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, or GL_PIXEL_UNPACK_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="value">
+        /// <para>
+        /// Specifies the symbolic name of a buffer object parameter. Accepted values are GL_BUFFER_ACCESS, GL_BUFFER_MAPPED, GL_BUFFER_SIZE, or GL_BUFFER_USAGE.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the requested parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetBufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetBufferParameteriv((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferParameterName)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return parameters of a buffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, or GL_PIXEL_UNPACK_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="value">
+        /// <para>
+        /// Specifies the symbolic name of a buffer object parameter. Accepted values are GL_BUFFER_ACCESS, GL_BUFFER_MAPPED, GL_BUFFER_SIZE, or GL_BUFFER_USAGE.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the requested parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetBufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetBufferParameteriv((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferParameterName)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return parameters of a buffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target buffer object. The symbolic constant must be GL_ARRAY_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, or GL_PIXEL_UNPACK_BUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="value">
+        /// <para>
+        /// Specifies the symbolic name of a buffer object parameter. Accepted values are GL_BUFFER_ACCESS, GL_BUFFER_MAPPED, GL_BUFFER_SIZE, or GL_BUFFER_USAGE.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the requested parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetBufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetBufferParameteriv((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferParameterName)pname, (Int32*)@params);
             #if DEBUG
             }
             #endif
@@ -9451,6 +13327,201 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetBufferParameteriv((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferParameterName)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        public static 
+        Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All[] sources, [OutAttribute] OpenTK.Graphics.ES20.All[] types, [OutAttribute] Int32[] ids, [OutAttribute] OpenTK.Graphics.ES20.All[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (OpenTK.Graphics.ES20.All* sources_ptr = sources)
+                fixed (OpenTK.Graphics.ES20.All* types_ptr = types)
+                fixed (Int32* ids_ptr = ids)
+                fixed (OpenTK.Graphics.ES20.All* severities_ptr = severities)
+                fixed (Int32* lengths_ptr = lengths)
+                {
+                    return Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        public static 
+        Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] out OpenTK.Graphics.ES20.All sources, [OutAttribute] out OpenTK.Graphics.ES20.All types, [OutAttribute] out Int32 ids, [OutAttribute] out OpenTK.Graphics.ES20.All severities, [OutAttribute] out Int32 lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (OpenTK.Graphics.ES20.All* sources_ptr = &sources)
+                fixed (OpenTK.Graphics.ES20.All* types_ptr = &types)
+                fixed (Int32* ids_ptr = &ids)
+                fixed (OpenTK.Graphics.ES20.All* severities_ptr = &severities)
+                fixed (Int32* lengths_ptr = &lengths)
+                {
+                    Int32 retval = Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                    sources = *sources_ptr;
+                    types = *types_ptr;
+                    ids = *ids_ptr;
+                    severities = *severities_ptr;
+                    lengths = *lengths_ptr;
+                    return retval;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All* sources, [OutAttribute] OpenTK.Graphics.ES20.All* types, [OutAttribute] Int32* ids, [OutAttribute] OpenTK.Graphics.ES20.All* severities, [OutAttribute] Int32* lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            return Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources, (OpenTK.Graphics.ES20.DebugType*)types, (UInt32*)ids, (OpenTK.Graphics.ES20.DebugSeverity*)severities, (Int32*)lengths, (StringBuilder)messageLog);
             #if DEBUG
             }
             #endif
@@ -9696,6 +13767,203 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         [System.CLSCompliant(false)]
         public static 
+        Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All[] sources, [OutAttribute] OpenTK.Graphics.ES20.All[] types, [OutAttribute] UInt32[] ids, [OutAttribute] OpenTK.Graphics.ES20.All[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (OpenTK.Graphics.ES20.All* sources_ptr = sources)
+                fixed (OpenTK.Graphics.ES20.All* types_ptr = types)
+                fixed (UInt32* ids_ptr = ids)
+                fixed (OpenTK.Graphics.ES20.All* severities_ptr = severities)
+                fixed (Int32* lengths_ptr = lengths)
+                {
+                    return Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] out OpenTK.Graphics.ES20.All sources, [OutAttribute] out OpenTK.Graphics.ES20.All types, [OutAttribute] out UInt32 ids, [OutAttribute] out OpenTK.Graphics.ES20.All severities, [OutAttribute] out Int32 lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (OpenTK.Graphics.ES20.All* sources_ptr = &sources)
+                fixed (OpenTK.Graphics.ES20.All* types_ptr = &types)
+                fixed (UInt32* ids_ptr = &ids)
+                fixed (OpenTK.Graphics.ES20.All* severities_ptr = &severities)
+                fixed (Int32* lengths_ptr = &lengths)
+                {
+                    Int32 retval = Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                    sources = *sources_ptr;
+                    types = *types_ptr;
+                    ids = *ids_ptr;
+                    severities = *severities_ptr;
+                    lengths = *lengths_ptr;
+                    return retval;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All* sources, [OutAttribute] OpenTK.Graphics.ES20.All* types, [OutAttribute] UInt32* ids, [OutAttribute] OpenTK.Graphics.ES20.All* severities, [OutAttribute] Int32* lengths, [OutAttribute] StringBuilder messageLog)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            return Delegates.glGetDebugMessageLog((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources, (OpenTK.Graphics.ES20.DebugType*)types, (UInt32*)ids, (OpenTK.Graphics.ES20.DebugSeverity*)severities, (Int32*)lengths, (StringBuilder)messageLog);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve messages from the debug message log
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// The number of debug messages to retrieve from the log.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The size of the buffer whose address is given by messageLog.
+        /// </para>
+        /// </param>
+        /// <param name="sources">
+        /// <para>
+        /// The address of an array of variables to receive the sources of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="types">
+        /// <para>
+        /// The address of an array of variables to receive the types of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="ids">
+        /// <para>
+        /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="severities">
+        /// <para>
+        /// The address of an array of variables to receive the severites of the retrieved messages.
+        /// </para>
+        /// </param>
+        /// <param name="lengths">
+        /// <para>
+        /// The address of an array of variables to receive the lengths of the received messages.
+        /// </para>
+        /// </param>
+        /// <param name="messageLog">
+        /// <para>
+        /// The address of an array of characters that will receive the messages.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
         Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.DebugSourceExternal[] sources, [OutAttribute] OpenTK.Graphics.ES20.DebugType[] types, [OutAttribute] UInt32[] ids, [OutAttribute] OpenTK.Graphics.ES20.DebugSeverity[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
         {
             #if DEBUG
@@ -9859,6 +14127,26 @@ namespace OpenTK.Graphics.ES20
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
         public static 
+        Single GetFloat(OpenTK.Graphics.ES20.All pname)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                Single retval;
+                Single* data_ptr = &retval;
+                Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data_ptr);
+                return retval;
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
         Single GetFloat(OpenTK.Graphics.ES20.GetPName pname)
         {
             #if DEBUG
@@ -9872,6 +14160,62 @@ namespace OpenTK.Graphics.ES20
                 Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data_ptr);
                 return retval;
             }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetFloat(OpenTK.Graphics.ES20.All pname, [OutAttribute] Single[] data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* data_ptr = data)
+                {
+                    Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetFloat(OpenTK.Graphics.ES20.All pname, [OutAttribute] out Single data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* data_ptr = &data)
+                {
+                    Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data_ptr);
+                    data = *data_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetFloat(OpenTK.Graphics.ES20.All pname, [OutAttribute] Single* data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data);
             #if DEBUG
             }
             #endif
@@ -9928,6 +14272,128 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetFloatv((OpenTK.Graphics.ES20.GetPName)pname, (Single*)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about attachments of a bound framebuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation.
+        /// </para>
+        /// </param>
+        /// <param name="attachment">
+        /// <para>
+        /// Specifies the attachment within target
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter of attachment to query.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of a variable receive the value of pname for attachment.
+        /// </para>
+        /// </param>
+        public static 
+        void GetFramebufferAttachmentParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetFramebufferAttachmentParameteriv((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.All)attachment, (OpenTK.Graphics.ES20.FramebufferParameterName)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about attachments of a bound framebuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation.
+        /// </para>
+        /// </param>
+        /// <param name="attachment">
+        /// <para>
+        /// Specifies the attachment within target
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter of attachment to query.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of a variable receive the value of pname for attachment.
+        /// </para>
+        /// </param>
+        public static 
+        void GetFramebufferAttachmentParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetFramebufferAttachmentParameteriv((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.All)attachment, (OpenTK.Graphics.ES20.FramebufferParameterName)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about attachments of a bound framebuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation.
+        /// </para>
+        /// </param>
+        /// <param name="attachment">
+        /// <para>
+        /// Specifies the attachment within target
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter of attachment to query.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of a variable receive the value of pname for attachment.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetFramebufferAttachmentParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All attachment, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetFramebufferAttachmentParameteriv((OpenTK.Graphics.ES20.FramebufferTarget)target, (OpenTK.Graphics.ES20.All)attachment, (OpenTK.Graphics.ES20.FramebufferParameterName)pname, (Int32*)@params);
             #if DEBUG
             }
             #endif
@@ -10057,6 +14523,26 @@ namespace OpenTK.Graphics.ES20
 
         /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
         public static 
+        Int32 GetInteger(OpenTK.Graphics.ES20.All pname)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                Int32 retval;
+                Int32* data_ptr = &retval;
+                Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data_ptr);
+                return retval;
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
         Int32 GetInteger(OpenTK.Graphics.ES20.GetPName pname)
         {
             #if DEBUG
@@ -10070,6 +14556,62 @@ namespace OpenTK.Graphics.ES20
                 Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data_ptr);
                 return retval;
             }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetInteger(OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* data_ptr = data)
+                {
+                    Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        public static 
+        void GetInteger(OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* data_ptr = &data)
+                {
+                    Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data_ptr);
+                    data = *data_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]</summary>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetInteger(OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* data)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data);
             #if DEBUG
             }
             #endif
@@ -10126,6 +14668,282 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetIntegerv((OpenTK.Graphics.ES20.GetPName)pname, (Int32*)data);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        public static 
+        void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = length)
+                {
+                    Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        public static 
+        void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                {
+                    Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                    length = *length_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length, (StringBuilder)label);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = length)
+                {
+                    Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* length_ptr = &length)
+                {
+                    Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                    length = *length_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Retrieve the label of a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object whose label to retrieve.
+        /// </para>
+        /// </param>
+        /// <param name="bufSize">
+        /// <para>
+        /// The length of the buffer whose address is in label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The address of a variable to receive the length of the object label.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string that will receive the object label.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] StringBuilder label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length, (StringBuilder)label);
             #if DEBUG
             }
             #endif
@@ -11142,6 +15960,173 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void GetPointer(OpenTK.Graphics.ES20.All pname, [OutAttribute] IntPtr @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetPointerv((OpenTK.Graphics.ES20.GetPointervPName)pname, (IntPtr)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Return the address of the specified pointer
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the array or buffer pointer to be returned. Symbolic constants GL_COLOR_ARRAY_POINTER, GL_EDGE_FLAG_ARRAY_POINTER, GL_FOG_COORD_ARRAY_POINTER, GL_FEEDBACK_BUFFER_POINTER, GL_INDEX_ARRAY_POINTER, GL_NORMAL_ARRAY_POINTER, GL_SECONDARY_COLOR_ARRAY_POINTER, GL_SELECTION_BUFFER_POINTER, GL_TEXTURE_COORD_ARRAY_POINTER, or GL_VERTEX_ARRAY_POINTER are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the pointer value specified by pname.
+        /// </para>
+        /// </param>
+        public static 
+        void GetPointer<T1>(OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T1[] @params)
+            where T1 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetPointerv((OpenTK.Graphics.ES20.GetPointervPName)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                @params_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Return the address of the specified pointer
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the array or buffer pointer to be returned. Symbolic constants GL_COLOR_ARRAY_POINTER, GL_EDGE_FLAG_ARRAY_POINTER, GL_FOG_COORD_ARRAY_POINTER, GL_FEEDBACK_BUFFER_POINTER, GL_INDEX_ARRAY_POINTER, GL_NORMAL_ARRAY_POINTER, GL_SECONDARY_COLOR_ARRAY_POINTER, GL_SELECTION_BUFFER_POINTER, GL_TEXTURE_COORD_ARRAY_POINTER, or GL_VERTEX_ARRAY_POINTER are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the pointer value specified by pname.
+        /// </para>
+        /// </param>
+        public static 
+        void GetPointer<T1>(OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T1[,] @params)
+            where T1 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetPointerv((OpenTK.Graphics.ES20.GetPointervPName)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                @params_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Return the address of the specified pointer
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the array or buffer pointer to be returned. Symbolic constants GL_COLOR_ARRAY_POINTER, GL_EDGE_FLAG_ARRAY_POINTER, GL_FOG_COORD_ARRAY_POINTER, GL_FEEDBACK_BUFFER_POINTER, GL_INDEX_ARRAY_POINTER, GL_NORMAL_ARRAY_POINTER, GL_SECONDARY_COLOR_ARRAY_POINTER, GL_SELECTION_BUFFER_POINTER, GL_TEXTURE_COORD_ARRAY_POINTER, or GL_VERTEX_ARRAY_POINTER are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the pointer value specified by pname.
+        /// </para>
+        /// </param>
+        public static 
+        void GetPointer<T1>(OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T1[,,] @params)
+            where T1 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetPointerv((OpenTK.Graphics.ES20.GetPointervPName)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                @params_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Return the address of the specified pointer
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the array or buffer pointer to be returned. Symbolic constants GL_COLOR_ARRAY_POINTER, GL_EDGE_FLAG_ARRAY_POINTER, GL_FOG_COORD_ARRAY_POINTER, GL_FEEDBACK_BUFFER_POINTER, GL_INDEX_ARRAY_POINTER, GL_NORMAL_ARRAY_POINTER, GL_SECONDARY_COLOR_ARRAY_POINTER, GL_SELECTION_BUFFER_POINTER, GL_TEXTURE_COORD_ARRAY_POINTER, or GL_VERTEX_ARRAY_POINTER are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the pointer value specified by pname.
+        /// </para>
+        /// </param>
+        public static 
+        void GetPointer<T1>(OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] ref T1 @params)
+            where T1 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetPointerv((OpenTK.Graphics.ES20.GetPointervPName)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+                @params = (T1)@params_ptr.Target;
+            }
+            finally
+            {
+                @params_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Return the address of the specified pointer
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the array or buffer pointer to be returned. Symbolic constants GL_COLOR_ARRAY_POINTER, GL_EDGE_FLAG_ARRAY_POINTER, GL_FOG_COORD_ARRAY_POINTER, GL_FEEDBACK_BUFFER_POINTER, GL_INDEX_ARRAY_POINTER, GL_NORMAL_ARRAY_POINTER, GL_SECONDARY_COLOR_ARRAY_POINTER, GL_SELECTION_BUFFER_POINTER, GL_TEXTURE_COORD_ARRAY_POINTER, or GL_VERTEX_ARRAY_POINTER are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the pointer value specified by pname.
+        /// </para>
+        /// </param>
+        public static 
         void GetPointer(OpenTK.Graphics.ES20.GetPointervPName pname, [OutAttribute] IntPtr @params)
         {
             #if DEBUG
@@ -11475,6 +16460,113 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void GetProgram(Int32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetProgram(Int32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetProgram(Int32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        public static 
         void GetProgram(Int32 program, OpenTK.Graphics.ES20.ProgramParameter pname, [OutAttribute] Int32[] @params)
         {
             #if DEBUG
@@ -11552,6 +16644,115 @@ namespace OpenTK.Graphics.ES20
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetProgram(Int32 program, OpenTK.Graphics.ES20.ProgramParameter pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetProgram(UInt32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetProgram(UInt32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a program object
+        /// </summary>
+        /// <param name="program">
+        /// <para>
+        /// Specifies the program object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_DELETE_STATUS, GL_LINK_STATUS, GL_VALIDATE_STATUS, GL_INFO_LOG_LENGTH, GL_ATTACHED_SHADERS, GL_ACTIVE_ATOMIC_COUNTER_BUFFERS, GL_ACTIVE_ATTRIBUTES, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, GL_ACTIVE_UNIFORMS, GL_ACTIVE_UNIFORM_BLOCKS, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, GL_ACTIVE_UNIFORM_MAX_LENGTH, GL_COMPUTE_WORK_GROUP_SIZE GL_PROGRAM_BINARY_LENGTH, GL_TRANSFORM_FEEDBACK_BUFFER_MODE, GL_TRANSFORM_FEEDBACK_VARYINGS, GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH, GL_GEOMETRY_VERTICES_OUT, GL_GEOMETRY_INPUT_TYPE, and GL_GEOMETRY_OUTPUT_TYPE.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetProgram(UInt32 program, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -11667,6 +16868,113 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetProgramiv((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about a bound renderbuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation. target must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter whose value to retrieve from the renderbuffer bound to target.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of an array to receive the value of the queried parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetRenderbufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetRenderbufferParameteriv((OpenTK.Graphics.ES20.RenderbufferTarget)target, (OpenTK.Graphics.ES20.RenderbufferParameterName)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about a bound renderbuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation. target must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter whose value to retrieve from the renderbuffer bound to target.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of an array to receive the value of the queried parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetRenderbufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetRenderbufferParameteriv((OpenTK.Graphics.ES20.RenderbufferTarget)target, (OpenTK.Graphics.ES20.RenderbufferParameterName)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve information about a bound renderbuffer object
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target of the query operation. target must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the parameter whose value to retrieve from the renderbuffer bound to target.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Specifies the address of an array to receive the value of the queried parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetRenderbufferParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetRenderbufferParameteriv((OpenTK.Graphics.ES20.RenderbufferTarget)target, (OpenTK.Graphics.ES20.RenderbufferParameterName)pname, (Int32*)@params);
             #if DEBUG
             }
             #endif
@@ -11959,6 +17267,113 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void GetShader(Int32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        public static 
+        void GetShader(Int32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetShader(Int32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        public static 
         void GetShader(Int32 shader, OpenTK.Graphics.ES20.ShaderParameter pname, [OutAttribute] Int32[] @params)
         {
             #if DEBUG
@@ -12036,6 +17451,115 @@ namespace OpenTK.Graphics.ES20
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetShader(Int32 shader, OpenTK.Graphics.ES20.ShaderParameter pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetShader(UInt32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetShader(UInt32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Returns a parameter from a shader object
+        /// </summary>
+        /// <param name="shader">
+        /// <para>
+        /// Specifies the shader object to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the object parameter. Accepted symbolic names are GL_SHADER_TYPE, GL_DELETE_STATUS, GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested object parameter.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetShader(UInt32 shader, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -12151,6 +17675,131 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetShaderiv((UInt32)shader, (OpenTK.Graphics.ES20.ShaderParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve the range and precision for numeric formats supported by the shader compiler
+        /// </summary>
+        /// <param name="shaderType">
+        /// <para>
+        /// Specifies the type of shader whose precision to query. shaderType must be GL_VERTEX_SHADER or GL_FRAGMENT_SHADER.
+        /// </para>
+        /// </param>
+        /// <param name="precisionType">
+        /// <para>
+        /// Specifies the numeric format whose precision and range to query.
+        /// </para>
+        /// </param>
+        /// <param name="range">
+        /// <para>
+        /// Specifies the address of array of two integers into which encodings of the implementation's numeric range are returned.
+        /// </para>
+        /// </param>
+        /// <param name="precision">
+        /// <para>
+        /// Specifies the address of an integer into which the numeric precision of the implementation is written.
+        /// </para>
+        /// </param>
+        public static 
+        void GetShaderPrecisionFormat(OpenTK.Graphics.ES20.All shadertype, OpenTK.Graphics.ES20.All precisiontype, [OutAttribute] Int32[] range, [OutAttribute] Int32[] precision)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* range_ptr = range)
+                fixed (Int32* precision_ptr = precision)
+                {
+                    Delegates.glGetShaderPrecisionFormat((OpenTK.Graphics.ES20.ShaderType)shadertype, (OpenTK.Graphics.ES20.ShaderPrecision)precisiontype, (Int32*)range_ptr, (Int32*)precision_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve the range and precision for numeric formats supported by the shader compiler
+        /// </summary>
+        /// <param name="shaderType">
+        /// <para>
+        /// Specifies the type of shader whose precision to query. shaderType must be GL_VERTEX_SHADER or GL_FRAGMENT_SHADER.
+        /// </para>
+        /// </param>
+        /// <param name="precisionType">
+        /// <para>
+        /// Specifies the numeric format whose precision and range to query.
+        /// </para>
+        /// </param>
+        /// <param name="range">
+        /// <para>
+        /// Specifies the address of array of two integers into which encodings of the implementation's numeric range are returned.
+        /// </para>
+        /// </param>
+        /// <param name="precision">
+        /// <para>
+        /// Specifies the address of an integer into which the numeric precision of the implementation is written.
+        /// </para>
+        /// </param>
+        public static 
+        void GetShaderPrecisionFormat(OpenTK.Graphics.ES20.All shadertype, OpenTK.Graphics.ES20.All precisiontype, [OutAttribute] out Int32 range, [OutAttribute] out Int32 precision)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* range_ptr = &range)
+                fixed (Int32* precision_ptr = &precision)
+                {
+                    Delegates.glGetShaderPrecisionFormat((OpenTK.Graphics.ES20.ShaderType)shadertype, (OpenTK.Graphics.ES20.ShaderPrecision)precisiontype, (Int32*)range_ptr, (Int32*)precision_ptr);
+                    range = *range_ptr;
+                    precision = *precision_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Retrieve the range and precision for numeric formats supported by the shader compiler
+        /// </summary>
+        /// <param name="shaderType">
+        /// <para>
+        /// Specifies the type of shader whose precision to query. shaderType must be GL_VERTEX_SHADER or GL_FRAGMENT_SHADER.
+        /// </para>
+        /// </param>
+        /// <param name="precisionType">
+        /// <para>
+        /// Specifies the numeric format whose precision and range to query.
+        /// </para>
+        /// </param>
+        /// <param name="range">
+        /// <para>
+        /// Specifies the address of array of two integers into which encodings of the implementation's numeric range are returned.
+        /// </para>
+        /// </param>
+        /// <param name="precision">
+        /// <para>
+        /// Specifies the address of an integer into which the numeric precision of the implementation is written.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetShaderPrecisionFormat(OpenTK.Graphics.ES20.All shadertype, OpenTK.Graphics.ES20.All precisiontype, [OutAttribute] Int32* range, [OutAttribute] Int32* precision)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetShaderPrecisionFormat((OpenTK.Graphics.ES20.ShaderType)shadertype, (OpenTK.Graphics.ES20.ShaderPrecision)precisiontype, (Int32*)range, (Int32*)precision);
             #if DEBUG
             }
             #endif
@@ -12456,6 +18105,32 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        String GetString(OpenTK.Graphics.ES20.All name)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe { return new string((sbyte*)Delegates.glGetString((OpenTK.Graphics.ES20.StringName)name)); }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a string describing the current GL connection
+        /// </summary>
+        /// <param name="name">
+        /// <para>
+        /// Specifies a symbolic constant, one of GL_VENDOR, GL_RENDERER, GL_VERSION, or GL_SHADING_LANGUAGE_VERSION. Additionally, glGetStringi accepts the GL_EXTENSIONS token.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// For glGetStringi, specifies the index of the string to return.
+        /// </para>
+        /// </param>
+        public static 
         String GetString(OpenTK.Graphics.ES20.StringName name)
         {
             #if DEBUG
@@ -12463,6 +18138,113 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             unsafe { return new string((sbyte*)Delegates.glGetString((OpenTK.Graphics.ES20.StringName)name)); }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        public static 
+        void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = @params)
+                {
+                    Delegates.glGetTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Single*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        public static 
+        void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Single @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = &@params)
+                {
+                    Delegates.glGetTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Single*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Single*)@params);
             #if DEBUG
             }
             #endif
@@ -12570,6 +18352,113 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Single*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        public static 
+        void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        public static 
+        void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return texture parameter values
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the symbolic name of the target texture. GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_3D, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, and GL_TEXTURE_CUBE_MAP_ARRAY are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a texture parameter. GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_BORDER_COLOR, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_IMMUTABLE_FORMAT, GL_TEXTURE_IMMUTABLE_LEVELS, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_SWIZZLE_RGBA, GL_TEXTURE_VIEW_MIN_LAYER, GL_TEXTURE_VIEW_MIN_LEVEL, GL_TEXTURE_VIEW_NUM_LAYERS, GL_TEXTURE_VIEW_NUM_LEVELS, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, and GL_TEXTURE_WRAP_R are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the texture parameters.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetTexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.GetTextureParameterName)pname, (Int32*)@params);
             #if DEBUG
             }
             #endif
@@ -13186,6 +19075,113 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = @params)
+                {
+                    Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Single @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = &@params)
+                {
+                    Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        public static 
         void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.VertexAttribParameter pname, [OutAttribute] Single[] @params)
         {
             #if DEBUG
@@ -13263,6 +19259,115 @@ namespace OpenTK.Graphics.ES20
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.VertexAttribParameter pname, [OutAttribute] Single* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = @params)
+                {
+                    Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Single @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = &@params)
+                {
+                    Delegates.glGetVertexAttribfv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Single*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Single* @params)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -13402,6 +19507,113 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        public static 
         void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.VertexAttribParameter pname, [OutAttribute] Int32[] @params)
         {
             #if DEBUG
@@ -13479,6 +19691,115 @@ namespace OpenTK.Graphics.ES20
         [System.CLSCompliant(false)]
         public static 
         unsafe void GetVertexAttrib(Int32 index, OpenTK.Graphics.ES20.VertexAttribParameter pname, [OutAttribute] Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = &@params)
+                {
+                    Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params_ptr);
+                    @params = *@params_ptr;
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return a generic vertex attribute parameter
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be queried.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the vertex attribute parameter to be queried. Accepted values are GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING, GL_VERTEX_ATTRIB_ARRAY_ENABLED, GL_VERTEX_ATTRIB_ARRAY_SIZE, GL_VERTEX_ATTRIB_ARRAY_STRIDE, GL_VERTEX_ATTRIB_ARRAY_TYPE, GL_VERTEX_ATTRIB_ARRAY_NORMALIZED, GL_VERTEX_ATTRIB_ARRAY_INTEGER, GL_VERTEX_ATTRIB_ARRAY_DIVISOR, or GL_CURRENT_VERTEX_ATTRIB.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// Returns the requested data.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void GetVertexAttrib(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
         {
             #if DEBUG
             using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -13594,6 +19915,198 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glGetVertexAttribiv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribParameter)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttribPointer(Int32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] IntPtr pointer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttribPointer<T2>(Int32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttribPointer<T2>(Int32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttribPointer<T2>(Int32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,,] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        public static 
+        void GetVertexAttribPointer<T2>(Int32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] ref T2 pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+                pointer = (T2)pointer_ptr.Target;
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -13770,6 +20283,203 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         public static 
         void GetVertexAttribPointer<T2>(Int32 index, OpenTK.Graphics.ES20.VertexAttribPointerParameter pname, [InAttribute, OutAttribute] ref T2 pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+                pointer = (T2)pointer_ptr.Target;
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttribPointer(UInt32 index, OpenTK.Graphics.ES20.All pname, [OutAttribute] IntPtr pointer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttribPointer<T2>(UInt32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttribPointer<T2>(UInt32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttribPointer<T2>(UInt32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,,] pointer)
+            where T2 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glGetVertexAttribPointerv((UInt32)index, (OpenTK.Graphics.ES20.VertexAttribPointerParameter)pname, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Return the address of the specified generic vertex attribute pointer
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the generic vertex attribute parameter to be returned.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the generic vertex attribute parameter to be returned. Must be GL_VERTEX_ATTRIB_ARRAY_POINTER.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Returns the pointer value.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void GetVertexAttribPointer<T2>(UInt32 index, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] ref T2 pointer)
             where T2 : struct
         {
             #if DEBUG
@@ -14002,6 +20712,32 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void Hint(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All mode)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glHint((OpenTK.Graphics.ES20.HintTarget)target, (OpenTK.Graphics.ES20.HintMode)mode);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify implementation-specific hints
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies a symbolic constant indicating the behavior to be controlled. GL_LINE_SMOOTH_HINT, GL_POLYGON_SMOOTH_HINT, GL_TEXTURE_COMPRESSION_HINT, and GL_FRAGMENT_SHADER_DERIVATIVE_HINT are accepted.
+        /// </para>
+        /// </param>
+        /// <param name="mode">
+        /// <para>
+        /// Specifies a symbolic constant indicating the desired behavior. GL_FASTEST, GL_NICEST, and GL_DONT_CARE are accepted.
+        /// </para>
+        /// </param>
+        public static 
         void Hint(OpenTK.Graphics.ES20.HintTarget target, OpenTK.Graphics.ES20.HintMode mode)
         {
             #if DEBUG
@@ -14052,6 +20788,32 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             return Delegates.glIsBuffer((UInt32)buffer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Test whether a capability is enabled
+        /// </summary>
+        /// <param name="cap">
+        /// <para>
+        /// Specifies a symbolic constant indicating a GL capability.
+        /// </para>
+        /// </param>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the capability.
+        /// </para>
+        /// </param>
+        public static 
+        bool IsEnabled(OpenTK.Graphics.ES20.All cap)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            return Delegates.glIsEnabled((OpenTK.Graphics.ES20.EnableCap)cap);
             #if DEBUG
             }
             #endif
@@ -14386,6 +21148,79 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void ObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 length, String label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)length, (String)label);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Label a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object to label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The length of the label to be used for the object.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string containing the label to assign to the object.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 length, String label)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glObjectLabel((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)length, (String)label);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>
+        /// Label a named object identified within a namespace
+        /// </summary>
+        /// <param name="identifier">
+        /// <para>
+        /// The namespace from which the name of the object is allocated.
+        /// </para>
+        /// </param>
+        /// <param name="name">
+        /// <para>
+        /// The name of the object to label.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// The length of the label to be used for the object.
+        /// </para>
+        /// </param>
+        /// <param name="label">
+        /// <para>
+        /// The address of a string containing the label to assign to the object.
+        /// </para>
+        /// </param>
+        public static 
         void ObjectLabel(OpenTK.Graphics.ES20.ObjectLabelIdentifier identifier, Int32 name, Int32 length, String label)
         {
             #if DEBUG
@@ -14641,6 +21476,32 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void PixelStore(OpenTK.Graphics.ES20.All pname, Int32 param)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glPixelStorei((OpenTK.Graphics.ES20.PixelStoreParameter)pname, (Int32)param);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set pixel storage modes
+        /// </summary>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of the parameter to be set. Six values affect the packing of pixel data into memory: GL_PACK_SWAP_BYTES, GL_PACK_LSB_FIRST, GL_PACK_ROW_LENGTH, GL_PACK_IMAGE_HEIGHT, GL_PACK_SKIP_PIXELS, GL_PACK_SKIP_ROWS, GL_PACK_SKIP_IMAGES, and GL_PACK_ALIGNMENT. Six more affect the unpacking of pixel data from memory: GL_UNPACK_SWAP_BYTES, GL_UNPACK_LSB_FIRST, GL_UNPACK_ROW_LENGTH, GL_UNPACK_IMAGE_HEIGHT, GL_UNPACK_SKIP_PIXELS, GL_UNPACK_SKIP_ROWS, GL_UNPACK_SKIP_IMAGES, and GL_UNPACK_ALIGNMENT.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// Specifies the value that pname is set to.
+        /// </para>
+        /// </param>
+        public static 
         void PixelStore(OpenTK.Graphics.ES20.PixelStoreParameter pname, Int32 param)
         {
             #if DEBUG
@@ -14763,6 +21624,248 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glPushDebugGroup((OpenTK.Graphics.ES20.All)source, (UInt32)id, (Int32)length, (String)message);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Read a block of pixels from the frame buffer
+        /// </summary>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the first pixel that is read from the frame buffer. This location is the lower left corner of a rectangular block of pixels.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specify the dimensions of the pixel rectangle. width and height of one correspond to a single pixel.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_RED, GL_GREEN, GL_BLUE, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. Must be one of GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_24_8, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV, or GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the pixel data.
+        /// </para>
+        /// </param>
+        public static 
+        void ReadPixels(Int32 x, Int32 y, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [OutAttribute] IntPtr pixels)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glReadPixels((Int32)x, (Int32)y, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Read a block of pixels from the frame buffer
+        /// </summary>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the first pixel that is read from the frame buffer. This location is the lower left corner of a rectangular block of pixels.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specify the dimensions of the pixel rectangle. width and height of one correspond to a single pixel.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_RED, GL_GREEN, GL_BLUE, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. Must be one of GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_24_8, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV, or GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the pixel data.
+        /// </para>
+        /// </param>
+        public static 
+        void ReadPixels<T6>(Int32 x, Int32 y, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T6[] pixels)
+            where T6 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glReadPixels((Int32)x, (Int32)y, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Read a block of pixels from the frame buffer
+        /// </summary>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the first pixel that is read from the frame buffer. This location is the lower left corner of a rectangular block of pixels.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specify the dimensions of the pixel rectangle. width and height of one correspond to a single pixel.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_RED, GL_GREEN, GL_BLUE, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. Must be one of GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_24_8, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV, or GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the pixel data.
+        /// </para>
+        /// </param>
+        public static 
+        void ReadPixels<T6>(Int32 x, Int32 y, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T6[,] pixels)
+            where T6 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glReadPixels((Int32)x, (Int32)y, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Read a block of pixels from the frame buffer
+        /// </summary>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the first pixel that is read from the frame buffer. This location is the lower left corner of a rectangular block of pixels.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specify the dimensions of the pixel rectangle. width and height of one correspond to a single pixel.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_RED, GL_GREEN, GL_BLUE, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. Must be one of GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_24_8, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV, or GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the pixel data.
+        /// </para>
+        /// </param>
+        public static 
+        void ReadPixels<T6>(Int32 x, Int32 y, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T6[,,] pixels)
+            where T6 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glReadPixels((Int32)x, (Int32)y, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Read a block of pixels from the frame buffer
+        /// </summary>
+        /// <param name="x">
+        /// <para>
+        /// Specify the window coordinates of the first pixel that is read from the frame buffer. This location is the lower left corner of a rectangular block of pixels.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specify the dimensions of the pixel rectangle. width and height of one correspond to a single pixel.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_RED, GL_GREEN, GL_BLUE, GL_RGB, GL_BGR, GL_RGBA, and GL_BGRA.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. Must be one of GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_24_8, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV, or GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Returns the pixel data.
+        /// </para>
+        /// </param>
+        public static 
+        void ReadPixels<T6>(Int32 x, Int32 y, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T6 pixels)
+            where T6 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glReadPixels((Int32)x, (Int32)y, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                pixels = (T6)pixels_ptr.Target;
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -15050,6 +22153,42 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void RenderbufferStorage(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glRenderbufferStorage((OpenTK.Graphics.ES20.RenderbufferTarget)target, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Establish data storage, format and dimensions of a renderbuffer object's image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+        /// </para>
+        /// </param>
+        /// <param name="internalformat">
+        /// <para>
+        /// Specifies the internal format to use for the renderbuffer object's image.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the renderbuffer, in pixels.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the renderbuffer, in pixels.
+        /// </para>
+        /// </param>
+        public static 
         void RenderbufferStorage(OpenTK.Graphics.ES20.RenderbufferTarget target, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
         {
             #if DEBUG
@@ -15109,6 +22248,278 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glScissor((Int32)x, (Int32)y, (Int32)width, (Int32)height);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary(Int32 count, Int32[] shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = shaders)
+                {
+                    Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, Int32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, Int32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, Int32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, Int32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                        binary = (T3)binary_ptr.Target;
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
             #if DEBUG
             }
             #endif
@@ -15368,6 +22779,278 @@ namespace OpenTK.Graphics.ES20
             unsafe
             {
                 fixed (Int32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                        binary = (T3)binary_ptr.Target;
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary(Int32 count, ref Int32 shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = &shaders)
+                {
+                    Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref Int32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref Int32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref Int32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref Int32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* shaders_ptr = &shaders)
                 {
                     GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
                     try
@@ -15688,6 +23371,253 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         [System.CLSCompliant(false)]
         public static 
+        unsafe void ShaderBinary(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                binary = (T3)binary_ptr.Target;
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
         unsafe void ShaderBinary(Int32 count, Int32* shaders, OpenTK.Graphics.ES20.ShaderBinaryFormat binaryformat, IntPtr binary, Int32 length)
         {
             #if DEBUG
@@ -15899,6 +23829,283 @@ namespace OpenTK.Graphics.ES20
             finally
             {
                 binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary(Int32 count, UInt32[] shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = shaders)
+                {
+                    Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, UInt32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, UInt32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, UInt32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, UInt32[] shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                        binary = (T3)binary_ptr.Target;
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
             }
             #if DEBUG
             }
@@ -16212,6 +24419,283 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         [System.CLSCompliant(false)]
         public static 
+        void ShaderBinary(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = &shaders)
+                {
+                    Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void ShaderBinary<T3>(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (UInt32* shaders_ptr = &shaders)
+                {
+                    GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+                    try
+                    {
+                        Delegates.glShaderBinary((Int32)count, (UInt32*)shaders_ptr, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                        binary = (T3)binary_ptr.Target;
+                    }
+                    finally
+                    {
+                        binary_ptr.Free();
+                    }
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
         void ShaderBinary(Int32 count, ref UInt32 shaders, OpenTK.Graphics.ES20.ShaderBinaryFormat binaryformat, IntPtr binary, Int32 length)
         {
             #if DEBUG
@@ -16453,6 +24937,253 @@ namespace OpenTK.Graphics.ES20
                         binary_ptr.Free();
                     }
                 }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary(Int32 count, UInt32* shaders, OpenTK.Graphics.ES20.All binaryformat, IntPtr binary, Int32 length)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary, (Int32)length);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, UInt32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, UInt32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, UInt32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] T3[,,] binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+            }
+            finally
+            {
+                binary_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Load pre-compiled shader binaries
+        /// </summary>
+        /// <param name="count">
+        /// <para>
+        /// Specifies the number of shader object handles contained in shaders.
+        /// </para>
+        /// </param>
+        /// <param name="shaders">
+        /// <para>
+        /// Specifies the address of an array of shader handles into which to load pre-compiled shader binaries.
+        /// </para>
+        /// </param>
+        /// <param name="binaryFormat">
+        /// <para>
+        /// Specifies the format of the shader binaries contained in binary.
+        /// </para>
+        /// </param>
+        /// <param name="binary">
+        /// <para>
+        /// Specifies the address of an array of bytes containing pre-compiled binary shader code.
+        /// </para>
+        /// </param>
+        /// <param name="length">
+        /// <para>
+        /// Specifies the length of the array whose address is given in binary.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void ShaderBinary<T3>(Int32 count, UInt32* shaders, OpenTK.Graphics.ES20.All binaryformat, [InAttribute, OutAttribute] ref T3 binary, Int32 length)
+            where T3 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle binary_ptr = GCHandle.Alloc(binary, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glShaderBinary((Int32)count, (UInt32*)shaders, (OpenTK.Graphics.ES20.ShaderBinaryFormat)binaryformat, (IntPtr)binary_ptr.AddrOfPinnedObject(), (Int32)length);
+                binary = (T3)binary_ptr.Target;
+            }
+            finally
+            {
+                binary_ptr.Free();
             }
             #if DEBUG
             }
@@ -16969,6 +25700,69 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void StencilFunc(OpenTK.Graphics.ES20.All func, Int32 @ref, Int32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilFunc((OpenTK.Graphics.ES20.StencilFunction)func, (Int32)@ref, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and back function and reference value for stencil testing
+        /// </summary>
+        /// <param name="func">
+        /// <para>
+        /// Specifies the test function. Eight symbolic constants are valid: GL_NEVER, GL_LESS, GL_LEQUAL, GL_GREATER, GL_GEQUAL, GL_EQUAL, GL_NOTEQUAL, and GL_ALWAYS. The initial value is GL_ALWAYS.
+        /// </para>
+        /// </param>
+        /// <param name="ref">
+        /// <para>
+        /// Specifies the reference value for the stencil test. ref is clamped to the range [0, 2 sup n - 1], where is the number of bitplanes in the stencil buffer. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done. The initial value is all 1's.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void StencilFunc(OpenTK.Graphics.ES20.All func, Int32 @ref, UInt32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilFunc((OpenTK.Graphics.ES20.StencilFunction)func, (Int32)@ref, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and back function and reference value for stencil testing
+        /// </summary>
+        /// <param name="func">
+        /// <para>
+        /// Specifies the test function. Eight symbolic constants are valid: GL_NEVER, GL_LESS, GL_LEQUAL, GL_GREATER, GL_GEQUAL, GL_EQUAL, GL_NOTEQUAL, and GL_ALWAYS. The initial value is GL_ALWAYS.
+        /// </para>
+        /// </param>
+        /// <param name="ref">
+        /// <para>
+        /// Specifies the reference value for the stencil test. ref is clamped to the range [0, 2 sup n - 1], where is the number of bitplanes in the stencil buffer. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done. The initial value is all 1's.
+        /// </para>
+        /// </param>
+        public static 
         void StencilFunc(OpenTK.Graphics.ES20.StencilFunction func, Int32 @ref, Int32 mask)
         {
             #if DEBUG
@@ -17008,6 +25802,79 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glStencilFunc((OpenTK.Graphics.ES20.StencilFunction)func, (Int32)@ref, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and/or back function and reference value for stencil testing
+        /// </summary>
+        /// <param name="face">
+        /// <para>
+        /// Specifies whether front and/or back stencil state is updated. Three symbolic constants are valid: GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK.
+        /// </para>
+        /// </param>
+        /// <param name="func">
+        /// <para>
+        /// Specifies the test function. Eight symbolic constants are valid: GL_NEVER, GL_LESS, GL_LEQUAL, GL_GREATER, GL_GEQUAL, GL_EQUAL, GL_NOTEQUAL, and GL_ALWAYS. The initial value is GL_ALWAYS.
+        /// </para>
+        /// </param>
+        /// <param name="ref">
+        /// <para>
+        /// Specifies the reference value for the stencil test. ref is clamped to the range [0, 2 sup n - 1], where is the number of bitplanes in the stencil buffer. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done. The initial value is all 1's.
+        /// </para>
+        /// </param>
+        public static 
+        void StencilFuncSeparate(OpenTK.Graphics.ES20.All face, OpenTK.Graphics.ES20.All func, Int32 @ref, Int32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilFuncSeparate((OpenTK.Graphics.ES20.StencilFace)face, (OpenTK.Graphics.ES20.StencilFunction)func, (Int32)@ref, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and/or back function and reference value for stencil testing
+        /// </summary>
+        /// <param name="face">
+        /// <para>
+        /// Specifies whether front and/or back stencil state is updated. Three symbolic constants are valid: GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK.
+        /// </para>
+        /// </param>
+        /// <param name="func">
+        /// <para>
+        /// Specifies the test function. Eight symbolic constants are valid: GL_NEVER, GL_LESS, GL_LEQUAL, GL_GREATER, GL_GEQUAL, GL_EQUAL, GL_NOTEQUAL, and GL_ALWAYS. The initial value is GL_ALWAYS.
+        /// </para>
+        /// </param>
+        /// <param name="ref">
+        /// <para>
+        /// Specifies the reference value for the stencil test. ref is clamped to the range [0, 2 sup n - 1], where is the number of bitplanes in the stencil buffer. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done. The initial value is all 1's.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void StencilFuncSeparate(OpenTK.Graphics.ES20.All face, OpenTK.Graphics.ES20.All func, Int32 @ref, UInt32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilFuncSeparate((OpenTK.Graphics.ES20.StencilFace)face, (OpenTK.Graphics.ES20.StencilFunction)func, (Int32)@ref, (UInt32)mask);
             #if DEBUG
             }
             #endif
@@ -17216,6 +26083,59 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void StencilMaskSeparate(OpenTK.Graphics.ES20.All face, Int32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilMaskSeparate((OpenTK.Graphics.ES20.StencilFace)face, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Control the front and/or back writing of individual bits in the stencil planes
+        /// </summary>
+        /// <param name="face">
+        /// <para>
+        /// Specifies whether the front and/or back stencil writemask is updated. Three symbolic constants are valid: GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a bit mask to enable and disable writing of individual bits in the stencil planes. Initially, the mask is all 1's.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void StencilMaskSeparate(OpenTK.Graphics.ES20.All face, UInt32 mask)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilMaskSeparate((OpenTK.Graphics.ES20.StencilFace)face, (UInt32)mask);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Control the front and/or back writing of individual bits in the stencil planes
+        /// </summary>
+        /// <param name="face">
+        /// <para>
+        /// Specifies whether the front and/or back stencil writemask is updated. Three symbolic constants are valid: GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK.
+        /// </para>
+        /// </param>
+        /// <param name="mask">
+        /// <para>
+        /// Specifies a bit mask to enable and disable writing of individual bits in the stencil planes. Initially, the mask is all 1's.
+        /// </para>
+        /// </param>
+        public static 
         void StencilMaskSeparate(OpenTK.Graphics.ES20.StencilFace face, Int32 mask)
         {
             #if DEBUG
@@ -17274,6 +26194,37 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void StencilOp(OpenTK.Graphics.ES20.All fail, OpenTK.Graphics.ES20.All zfail, OpenTK.Graphics.ES20.All zpass)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilOp((OpenTK.Graphics.ES20.StencilOp)fail, (OpenTK.Graphics.ES20.StencilOp)zfail, (OpenTK.Graphics.ES20.StencilOp)zpass);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and back stencil test actions
+        /// </summary>
+        /// <param name="sfail">
+        /// <para>
+        /// Specifies the action to take when the stencil test fails. Eight symbolic constants are accepted: GL_KEEP, GL_ZERO, GL_REPLACE, GL_INCR, GL_INCR_WRAP, GL_DECR, GL_DECR_WRAP, and GL_INVERT. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        /// <param name="dpfail">
+        /// <para>
+        /// Specifies the stencil action when the stencil test passes, but the depth test fails. dpfail accepts the same symbolic constants as sfail. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        /// <param name="dppass">
+        /// <para>
+        /// Specifies the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled. dppass accepts the same symbolic constants as sfail. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        public static 
         void StencilOp(OpenTK.Graphics.ES20.StencilOp fail, OpenTK.Graphics.ES20.StencilOp zfail, OpenTK.Graphics.ES20.StencilOp zpass)
         {
             #if DEBUG
@@ -17281,6 +26232,42 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glStencilOp((OpenTK.Graphics.ES20.StencilOp)fail, (OpenTK.Graphics.ES20.StencilOp)zfail, (OpenTK.Graphics.ES20.StencilOp)zpass);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set front and/or back stencil test actions
+        /// </summary>
+        /// <param name="face">
+        /// <para>
+        /// Specifies whether front and/or back stencil state is updated. Three symbolic constants are valid: GL_FRONT, GL_BACK, and GL_FRONT_AND_BACK.
+        /// </para>
+        /// </param>
+        /// <param name="sfail">
+        /// <para>
+        /// Specifies the action to take when the stencil test fails. Eight symbolic constants are accepted: GL_KEEP, GL_ZERO, GL_REPLACE, GL_INCR, GL_INCR_WRAP, GL_DECR, GL_DECR_WRAP, and GL_INVERT. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        /// <param name="dpfail">
+        /// <para>
+        /// Specifies the stencil action when the stencil test passes, but the depth test fails. dpfail accepts the same symbolic constants as sfail. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        /// <param name="dppass">
+        /// <para>
+        /// Specifies the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled. dppass accepts the same symbolic constants as sfail. The initial value is GL_KEEP.
+        /// </para>
+        /// </param>
+        public static 
+        void StencilOpSeparate(OpenTK.Graphics.ES20.All face, OpenTK.Graphics.ES20.All sfail, OpenTK.Graphics.ES20.All dpfail, OpenTK.Graphics.ES20.All dppass)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glStencilOpSeparate((OpenTK.Graphics.ES20.StencilFace)face, (OpenTK.Graphics.ES20.StencilOp)sfail, (OpenTK.Graphics.ES20.StencilOp)dpfail, (OpenTK.Graphics.ES20.StencilOp)dppass);
             #if DEBUG
             }
             #endif
@@ -17353,6 +26340,690 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glStencilOpSeparate((OpenTK.Graphics.ES20.StencilFace)face, (OpenTK.Graphics.ES20.StencilOp)sfail, (OpenTK.Graphics.ES20.StencilOp)dpfail, (OpenTK.Graphics.ES20.StencilOp)dppass);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, IntPtr pixels)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T8 pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                pixels = (T8)pixels_ptr.Target;
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D(OpenTK.Graphics.ES20.All target, Int32 level, PixelInternalFormat internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, IntPtr pixels)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, PixelInternalFormat internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, PixelInternalFormat internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, PixelInternalFormat internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture image
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_PROXY_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image. If target is GL_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_RECTANGLE, level must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="internalFormat">
+        /// <para>
+        /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture image. All implementations support texture images that are at least 1024 texels wide.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets. All implementations support 2D texture images that are at least 1024 texels high, and texture arrays that are at least 256 layers deep.
+        /// </para>
+        /// </param>
+        /// <param name="border">
+        /// <para>
+        /// This value must be 0.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, PixelInternalFormat internalformat, Int32 width, Int32 height, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T8 pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                pixels = (T8)pixels_ptr.Target;
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -18069,6 +27740,45 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Single param)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexParameterf((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Single)param);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        public static 
         void TexParameter(OpenTK.Graphics.ES20.TextureTarget target, OpenTK.Graphics.ES20.TextureParameterName pname, Single param)
         {
             #if DEBUG
@@ -18076,6 +27786,91 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glTexParameterf((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Single)param);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Single[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Single* @params_ptr = @params)
+                {
+                    Delegates.glTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Single*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Single* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexParameterfv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Single*)@params);
             #if DEBUG
             }
             #endif
@@ -18193,6 +27988,45 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Int32 param)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexParameteri((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Int32)param);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        public static 
         void TexParameter(OpenTK.Graphics.ES20.TextureTarget target, OpenTK.Graphics.ES20.TextureParameterName pname, Int32 param)
         {
             #if DEBUG
@@ -18200,6 +28034,91 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glTexParameteri((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Int32)param);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        public static 
+        void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Int32[] @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            unsafe
+            {
+                fixed (Int32* @params_ptr = @params)
+                {
+                    Delegates.glTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Int32*)@params_ptr);
+                }
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Set texture parameters
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture, which must be either GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, or GL_TEXTURE_CUBE_MAP.
+        /// </para>
+        /// </param>
+        /// <param name="pname">
+        /// <para>
+        /// Specifies the symbolic name of a single-valued texture parameter. pname can be one of the following: GL_DEPTH_STENCIL_TEXTURE_MODE, GL_TEXTURE_BASE_LEVEL, GL_TEXTURE_COMPARE_FUNC, GL_TEXTURE_COMPARE_MODE, GL_TEXTURE_LOD_BIAS, GL_TEXTURE_MIN_FILTER, GL_TEXTURE_MAG_FILTER, GL_TEXTURE_MIN_LOD, GL_TEXTURE_MAX_LOD, GL_TEXTURE_MAX_LEVEL, GL_TEXTURE_SWIZZLE_R, GL_TEXTURE_SWIZZLE_G, GL_TEXTURE_SWIZZLE_B, GL_TEXTURE_SWIZZLE_A, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T, or GL_TEXTURE_WRAP_R.
+        /// </para>
+        /// <para>
+        /// For the vector commands (glTexParameter*v), pname can also be one of GL_TEXTURE_BORDER_COLOR or GL_TEXTURE_SWIZZLE_RGBA.
+        /// </para>
+        /// </param>
+        /// <param name="param">
+        /// <para>
+        /// For the scalar commands, specifies the value of pname.
+        /// </para>
+        /// </param>
+        /// <param name="params">
+        /// <para>
+        /// For the vector commands, specifies a pointer to an array where the value or values of pname are stored.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        unsafe void TexParameter(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, Int32* @params)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Int32*)@params);
             #if DEBUG
             }
             #endif
@@ -18285,6 +28204,348 @@ namespace OpenTK.Graphics.ES20
             {
             #endif
             Delegates.glTexParameteriv((OpenTK.Graphics.ES20.TextureTarget)target, (OpenTK.Graphics.ES20.TextureParameterName)pname, (Int32*)@params);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexSubImage2D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, IntPtr pixels)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T8[,,] pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Specify a two-dimensional texture subimage
+        /// </summary>
+        /// <param name="target">
+        /// <para>
+        /// Specifies the target texture. Must be GL_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_TEXTURE_CUBE_MAP_NEGATIVE_X, GL_TEXTURE_CUBE_MAP_POSITIVE_Y, GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, GL_TEXTURE_CUBE_MAP_POSITIVE_Z, GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, or GL_TEXTURE_1D_ARRAY.
+        /// </para>
+        /// </param>
+        /// <param name="level">
+        /// <para>
+        /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+        /// </para>
+        /// </param>
+        /// <param name="xoffset">
+        /// <para>
+        /// Specifies a texel offset in the x direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="yoffset">
+        /// <para>
+        /// Specifies a texel offset in the y direction within the texture array.
+        /// </para>
+        /// </param>
+        /// <param name="width">
+        /// <para>
+        /// Specifies the width of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="height">
+        /// <para>
+        /// Specifies the height of the texture subimage.
+        /// </para>
+        /// </param>
+        /// <param name="format">
+        /// <para>
+        /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+        /// </para>
+        /// </param>
+        /// <param name="data">
+        /// <para>
+        /// Specifies a pointer to the image data in memory.
+        /// </para>
+        /// </param>
+        public static 
+        void TexSubImage2D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 width, Int32 height, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T8 pixels)
+            where T8 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glTexSubImage2D((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)width, (Int32)height, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                pixels = (T8)pixels_ptr.Target;
+            }
+            finally
+            {
+                pixels_ptr.Free();
+            }
             #if DEBUG
             }
             #endif
@@ -22099,6 +32360,273 @@ namespace OpenTK.Graphics.ES20
         /// </para>
         /// </param>
         public static 
+        void VertexAttribPointer(Int32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, IntPtr pointer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        public static 
+        void VertexAttribPointer<T5>(Int32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        public static 
+        void VertexAttribPointer<T5>(Int32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[,] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        public static 
+        void VertexAttribPointer<T5>(Int32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[,,] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        public static 
+        void VertexAttribPointer<T5>(Int32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] ref T5 pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+                pointer = (T5)pointer_ptr.Target;
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        public static 
         void VertexAttribPointer(Int32 index, Int32 size, OpenTK.Graphics.ES20.VertexAttribPointerType type, bool normalized, Int32 stride, IntPtr pointer)
         {
             #if DEBUG
@@ -22311,6 +32839,278 @@ namespace OpenTK.Graphics.ES20
         /// </param>
         public static 
         void VertexAttribPointer<T5>(Int32 index, Int32 size, OpenTK.Graphics.ES20.VertexAttribPointerType type, bool normalized, Int32 stride, [InAttribute, OutAttribute] ref T5 pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+                pointer = (T5)pointer_ptr.Target;
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void VertexAttribPointer(UInt32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, IntPtr pointer)
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer);
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void VertexAttribPointer<T5>(UInt32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void VertexAttribPointer<T5>(UInt32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[,] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void VertexAttribPointer<T5>(UInt32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] T5[,,] pointer)
+            where T5 : struct
+        {
+            #if DEBUG
+            using (new ErrorHelper(GraphicsContext.CurrentContext))
+            {
+            #endif
+            GCHandle pointer_ptr = GCHandle.Alloc(pointer, GCHandleType.Pinned);
+            try
+            {
+                Delegates.glVertexAttribPointer((UInt32)index, (Int32)size, (OpenTK.Graphics.ES20.VertexAttribPointerType)type, (bool)normalized, (Int32)stride, (IntPtr)pointer_ptr.AddrOfPinnedObject());
+            }
+            finally
+            {
+                pointer_ptr.Free();
+            }
+            #if DEBUG
+            }
+            #endif
+        }
+
+        /// <summary>[requires: v2.0 and ES_VERSION_2_0]
+        /// Define an array of generic vertex attribute data
+        /// </summary>
+        /// <param name="index">
+        /// <para>
+        /// Specifies the index of the generic vertex attribute to be modified.
+        /// </para>
+        /// </param>
+        /// <param name="size">
+        /// <para>
+        /// Specifies the number of components per generic vertex attribute. Must be 1, 2, 3, 4. Additionally, the symbolic constant GL_BGRA is accepted by glVertexAttribPointer. The initial value is 4.
+        /// </para>
+        /// </param>
+        /// <param name="type">
+        /// <para>
+        /// Specifies the data type of each component in the array. The symbolic constants GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT, GL_INT, and GL_UNSIGNED_INT are accepted by glVertexAttribPointer and glVertexAttribIPointer. Additionally GL_HALF_FLOAT, GL_FLOAT, GL_DOUBLE, GL_FIXED, GL_INT_2_10_10_10_REV, GL_UNSIGNED_INT_2_10_10_10_REV and GL_UNSIGNED_INT_10F_11F_11F_REV are accepted by glVertexAttribPointer. GL_DOUBLE is also accepted by glVertexAttribLPointer and is the only token accepted by the type parameter for that function. The initial value is GL_FLOAT.
+        /// </para>
+        /// </param>
+        /// <param name="normalized">
+        /// <para>
+        /// For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed.
+        /// </para>
+        /// </param>
+        /// <param name="stride">
+        /// <para>
+        /// Specifies the byte offset between consecutive generic vertex attributes. If stride is 0, the generic vertex attributes are understood to be tightly packed in the array. The initial value is 0.
+        /// </para>
+        /// </param>
+        /// <param name="pointer">
+        /// <para>
+        /// Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target. The initial value is 0.
+        /// </para>
+        /// </param>
+        [System.CLSCompliant(false)]
+        public static 
+        void VertexAttribPointer<T5>(UInt32 index, Int32 size, OpenTK.Graphics.ES20.All type, bool normalized, Int32 stride, [InAttribute, OutAttribute] ref T5 pointer)
             where T5 : struct
         {
             #if DEBUG
@@ -22728,6 +33528,59 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void BeginQuery(OpenTK.Graphics.ES20.All target, Int32 id)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glBeginQueryEXT((OpenTK.Graphics.ES20.QueryTarget)target, (UInt32)id);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]
+            /// Delimit the boundaries of a query object
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target type of query object established between glBeginQuery and the subsequent glEndQuery. The symbolic constant must be one of GL_SAMPLES_PASSED, GL_ANY_SAMPLES_PASSED, GL_ANY_SAMPLES_PASSED_CONSERVATIVE, GL_PRIMITIVES_GENERATED, GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN, or GL_TIME_ELAPSED.
+            /// </para>
+            /// </param>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void BeginQuery(OpenTK.Graphics.ES20.All target, UInt32 id)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glBeginQueryEXT((OpenTK.Graphics.ES20.QueryTarget)target, (UInt32)id);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]
+            /// Delimit the boundaries of a query object
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target type of query object established between glBeginQuery and the subsequent glEndQuery. The symbolic constant must be one of GL_SAMPLES_PASSED, GL_ANY_SAMPLES_PASSED, GL_ANY_SAMPLES_PASSED_CONSERVATIVE, GL_PRIMITIVES_GENERATED, GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN, or GL_TIME_ELAPSED.
+            /// </para>
+            /// </param>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            public static 
             void BeginQuery(OpenTK.Graphics.ES20.QueryTarget target, Int32 id)
             {
                 #if DEBUG
@@ -22805,6 +33658,32 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glBindProgramPipelineEXT((UInt32)pipeline);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_blend_minmax]
+            /// Specify the equation used for both the RGB blend equation and the Alpha blend equation
+            /// </summary>
+            /// <param name="buf">
+            /// <para>
+            /// for glBlendEquationi, specifies the index of the draw buffer for which to set the blend equation.
+            /// </para>
+            /// </param>
+            /// <param name="mode">
+            /// <para>
+            /// specifies how source and destination colors are combined. It must be GL_FUNC_ADD, GL_FUNC_SUBTRACT, GL_FUNC_REVERSE_SUBTRACT, GL_MIN, GL_MAX.
+            /// </para>
+            /// </param>
+            public static 
+            void BlendEquation(OpenTK.Graphics.ES20.All mode)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glBlendEquationEXT((OpenTK.Graphics.ES20.BlendEquationMode)mode);
                 #if DEBUG
                 }
                 #endif
@@ -23345,6 +34224,42 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void DrawArraysInstanced(OpenTK.Graphics.ES20.All mode, Int32 start, Int32 count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawArraysInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)start, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a range of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES GL_LINES_ADJACENCY, GL_LINE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY, GL_TRIANGLE_STRIP_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Specifies the starting index in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
             void DrawArraysInstanced(OpenTK.Graphics.ES20.PrimitiveType mode, Int32 start, Int32 count, Int32 primcount)
             {
                 #if DEBUG
@@ -23352,6 +34267,97 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDrawArraysInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)start, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawBuffers(Int32 n, OpenTK.Graphics.ES20.All[] bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* bufs_ptr = bufs)
+                    {
+                        Delegates.glDrawBuffersEXT((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawBuffers(Int32 n, ref OpenTK.Graphics.ES20.All bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* bufs_ptr = &bufs)
+                    {
+                        Delegates.glDrawBuffersEXT((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void DrawBuffers(Int32 n, OpenTK.Graphics.ES20.All* bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawBuffersEXT((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs);
                 #if DEBUG
                 }
                 #endif
@@ -23500,6 +34506,248 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDrawBuffersIndexedEXT((Int32)n, (OpenTK.Graphics.ES20.All*)location, (Int32*)indices);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawElementsInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_draw_instanced|EXT_instanced_arrays]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                    indices = (T3)indices_ptr.Target;
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
                 #if DEBUG
                 }
                 #endif
@@ -23749,6 +34997,20 @@ namespace OpenTK.Graphics.ES20
 
             /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
             public static 
+            void EndQuery(OpenTK.Graphics.ES20.All target)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glEndQueryEXT((OpenTK.Graphics.ES20.QueryTarget)target);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
+            public static 
             void EndQuery(OpenTK.Graphics.ES20.QueryTarget target)
             {
                 #if DEBUG
@@ -23756,6 +35018,37 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glEndQueryEXT((OpenTK.Graphics.ES20.QueryTarget)target);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_map_buffer_range]
+            /// Indicate modifications to a range of a mapped buffer
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target of the flush operation. target must be GL_ARRAY_BUFFER, GL_COPY_READ_BUFFER, GL_COPY_WRITE_BUFFER, GL_DISPATCH_INDIRECT_BUFFER, GL_DRAW_INDIRECT_BUFFER, GL_ELEMENT_ARRAY_BUFFER, GL_PIXEL_PACK_BUFFER, GL_PIXEL_UNPACK_BUFFER, GL_QUERY_BUFFER, GL_SHADER_STORAGE_BUFFER, GL_TEXTURE_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER, or GL_UNIFORM_BUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="offset">
+            /// <para>
+            /// Specifies the start of the buffer subrange, in basic machine units.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies the length of the buffer subrange, in basic machine units.
+            /// </para>
+            /// </param>
+            public static 
+            void FlushMappedBufferRange(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr length)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glFlushMappedBufferRangeEXT((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)length);
                 #if DEBUG
                 }
                 #endif
@@ -24202,6 +35495,120 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 return Delegates.glGetGraphicsResetStatusEXT();
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            public static 
+            void GetInteger(OpenTK.Graphics.ES20.All target, Int32 index, [OutAttribute] Int32[] data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* data_ptr = data)
+                    {
+                        Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            public static 
+            void GetInteger(OpenTK.Graphics.ES20.All target, Int32 index, [OutAttribute] out Int32 data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* data_ptr = &data)
+                    {
+                        Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data_ptr);
+                        data = *data_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetInteger(OpenTK.Graphics.ES20.All target, Int32 index, [OutAttribute] Int32* data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetInteger(OpenTK.Graphics.ES20.All target, UInt32 index, [OutAttribute] Int32[] data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* data_ptr = data)
+                    {
+                        Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetInteger(OpenTK.Graphics.ES20.All target, UInt32 index, [OutAttribute] out Int32 data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* data_ptr = &data)
+                    {
+                        Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data_ptr);
+                        data = *data_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multiview_draw_buffers]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetInteger(OpenTK.Graphics.ES20.All target, UInt32 index, [OutAttribute] Int32* data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetIntegeri_vEXT((OpenTK.Graphics.ES20.GetIndexedPName)target, (UInt32)index, (Int32*)data);
                 #if DEBUG
                 }
                 #endif
@@ -25289,6 +36696,62 @@ namespace OpenTK.Graphics.ES20
 
             /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
             public static 
+            void GetQuery(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryivEXT((OpenTK.Graphics.ES20.QueryTarget)target, (OpenTK.Graphics.ES20.GetQueryParam)pname, (Int32*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
+            public static 
+            void GetQuery(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryivEXT((OpenTK.Graphics.ES20.QueryTarget)target, (OpenTK.Graphics.ES20.GetQueryParam)pname, (Int32*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQuery(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryivEXT((OpenTK.Graphics.ES20.QueryTarget)target, (OpenTK.Graphics.ES20.GetQueryParam)pname, (Int32*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]</summary>
+            public static 
             void GetQuery(OpenTK.Graphics.ES20.QueryTarget target, OpenTK.Graphics.ES20.GetQueryParam pname, [OutAttribute] Int32[] @params)
             {
                 #if DEBUG
@@ -25338,6 +36801,113 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glGetQueryivEXT((OpenTK.Graphics.ES20.QueryTarget)target, (OpenTK.Graphics.ES20.GetQueryParam)pname, (Int32*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            public static 
+            void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            public static 
+            void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int64 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params);
                 #if DEBUG
                 }
                 #endif
@@ -25439,6 +37009,115 @@ namespace OpenTK.Graphics.ES20
             [System.CLSCompliant(false)]
             public static 
             unsafe void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.GetQueryObjectParam pname, [OutAttribute] Int64* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int64 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int64* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjecti64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int64*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int64* @params)
             {
                 #if DEBUG
                 using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -25578,6 +37257,113 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            public static 
+            void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            public static 
             void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.GetQueryObjectParam pname, [OutAttribute] Int32[] @params)
             {
                 #if DEBUG
@@ -25655,6 +37441,115 @@ namespace OpenTK.Graphics.ES20
             [System.CLSCompliant(false)]
             public static 
             unsafe void GetQueryObject(Int32 id, OpenTK.Graphics.ES20.GetQueryObjectParam pname, [OutAttribute] Int32* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out Int32 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjectivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (Int32*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] Int32* @params)
             {
                 #if DEBUG
                 using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -25795,6 +37690,115 @@ namespace OpenTK.Graphics.ES20
             /// </param>
             [System.CLSCompliant(false)]
             public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] UInt64[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt64* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjectui64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt64*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out UInt64 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt64* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjectui64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt64*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] UInt64* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjectui64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt64*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
             void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.GetQueryObjectParam pname, [OutAttribute] UInt64[] @params)
             {
                 #if DEBUG
@@ -25879,6 +37883,115 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glGetQueryObjectui64vEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt64*)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] UInt32[] @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt32* @params_ptr = @params)
+                    {
+                        Delegates.glGetQueryObjectuivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt32*)@params_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] out UInt32 @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt32* @params_ptr = &@params)
+                    {
+                        Delegates.glGetQueryObjectuivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt32*)@params_ptr);
+                        @params = *@params_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_disjoint_timer_query|EXT_occlusion_query_boolean]
+            /// Return parameters of a query object
+            /// </summary>
+            /// <param name="id">
+            /// <para>
+            /// Specifies the name of a query object.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the symbolic name of a query object parameter. Accepted values are GL_QUERY_RESULT or GL_QUERY_RESULT_AVAILABLE.
+            /// </para>
+            /// </param>
+            /// <param name="params">
+            /// <para>
+            /// If a buffer is bound to the GL_QUERY_RESULT_BUFFER target, then params is treated as an offset to a location within that buffer's data store to receive the result of the query. If no buffer is bound to GL_QUERY_RESULT_BUFFER, then params is treated as an address in client memory of a variable to receive the resulting data.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetQueryObject(UInt32 id, OpenTK.Graphics.ES20.All pname, [OutAttribute] UInt32* @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetQueryObjectuivEXT((UInt32)id, (OpenTK.Graphics.ES20.GetQueryObjectParam)pname, (UInt32*)@params);
                 #if DEBUG
                 }
                 #endif
@@ -26146,6 +38259,79 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            IntPtr MapBufferRange(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr length, Int32 access)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glMapBufferRangeEXT((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)length, (UInt32)access);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_map_buffer_range]
+            /// Map a section of a buffer object's data store
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target buffer is bound.
+            /// </para>
+            /// </param>
+            /// <param name="offset">
+            /// <para>
+            /// Specifies a the starting offset within the buffer of the range to be mapped.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies a length of the range to be mapped.
+            /// </para>
+            /// </param>
+            /// <param name="access">
+            /// <para>
+            /// Specifies a combination of access flags indicating the desired access to the range.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            IntPtr MapBufferRange(OpenTK.Graphics.ES20.All target, IntPtr offset, IntPtr length, UInt32 access)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glMapBufferRangeEXT((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)length, (UInt32)access);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_map_buffer_range]
+            /// Map a section of a buffer object's data store
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target buffer is bound.
+            /// </para>
+            /// </param>
+            /// <param name="offset">
+            /// <para>
+            /// Specifies a the starting offset within the buffer of the range to be mapped.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// Specifies a length of the range to be mapped.
+            /// </para>
+            /// </param>
+            /// <param name="access">
+            /// <para>
+            /// Specifies a combination of access flags indicating the desired access to the range.
+            /// </para>
+            /// </param>
+            public static 
             IntPtr MapBufferRange(OpenTK.Graphics.ES20.BufferTarget target, IntPtr offset, IntPtr length, Int32 access)
             {
                 #if DEBUG
@@ -26190,6 +38376,129 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 return Delegates.glMapBufferRangeEXT((OpenTK.Graphics.ES20.BufferTarget)target, (IntPtr)offset, (IntPtr)length, (UInt32)access);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives from array data
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Points to an array of starting indices in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the first and count
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawArrays(OpenTK.Graphics.ES20.All mode, Int32[] first, Int32[] count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* first_ptr = first)
+                    fixed (Int32* count_ptr = count)
+                    {
+                        Delegates.glMultiDrawArraysEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)first_ptr, (Int32*)count_ptr, (Int32)primcount);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives from array data
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Points to an array of starting indices in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the first and count
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawArrays(OpenTK.Graphics.ES20.All mode, ref Int32 first, ref Int32 count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* first_ptr = &first)
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        Delegates.glMultiDrawArraysEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)first_ptr, (Int32*)count_ptr, (Int32)primcount);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives from array data
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Points to an array of starting indices in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the first and count
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawArrays(OpenTK.Graphics.ES20.All mode, Int32* first, Int32* count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glMultiDrawArraysEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)first, (Int32*)count, (Int32)primcount);
                 #if DEBUG
                 }
                 #endif
@@ -26313,6 +38622,797 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glMultiDrawArraysEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)first, (Int32*)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements(OpenTK.Graphics.ES20.All mode, Int32[] count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = count)
+                    {
+                        Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32[] count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32[] count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32[] count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32[] count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                            indices = (T3)indices_ptr.Target;
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements(OpenTK.Graphics.ES20.All mode, ref Int32 count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, ref Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, ref Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, ref Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            public static 
+            void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, ref Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* count_ptr = &count)
+                    {
+                        GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                        try
+                        {
+                            Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count_ptr, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                            indices = (T3)indices_ptr.Target;
+                        }
+                        finally
+                        {
+                            indices_ptr.Free();
+                        }
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawElements(OpenTK.Graphics.ES20.All mode, Int32* count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32* count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32* count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32* count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multi_draw_arrays]
+            /// Render multiple sets of primitives by specifying indices of array data elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Points to an array of the elements counts.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="drawcount">
+            /// <para>
+            /// Specifies the size of the count and indices arrays.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void MultiDrawElements<T3>(OpenTK.Graphics.ES20.All mode, Int32* count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glMultiDrawElementsEXT((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32*)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                    indices = (T3)indices_ptr.Target;
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
                 #if DEBUG
                 }
                 #endif
@@ -27142,7 +40242,70 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void ProgramParameter(Int32 program, OpenTK.Graphics.ES20.All pname, Int32 value)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glProgramParameteriEXT((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameterName)pname, (Int32)value);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_separate_shader_objects]
+            /// Specify a parameter for a program object
+            /// </summary>
+            /// <param name="program">
+            /// <para>
+            /// Specifies the name of a program object whose parameter to modify.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the name of the parameter to modify.
+            /// </para>
+            /// </param>
+            /// <param name="value">
+            /// <para>
+            /// Specifies the new value of the parameter specified by pname for program.
+            /// </para>
+            /// </param>
+            public static 
             void ProgramParameter(Int32 program, OpenTK.Graphics.ES20.ProgramParameterName pname, Int32 value)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glProgramParameteriEXT((UInt32)program, (OpenTK.Graphics.ES20.ProgramParameterName)pname, (Int32)value);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_separate_shader_objects]
+            /// Specify a parameter for a program object
+            /// </summary>
+            /// <param name="program">
+            /// <para>
+            /// Specifies the name of a program object whose parameter to modify.
+            /// </para>
+            /// </param>
+            /// <param name="pname">
+            /// <para>
+            /// Specifies the name of the parameter to modify.
+            /// </para>
+            /// </param>
+            /// <param name="value">
+            /// <para>
+            /// Specifies the new value of the parameter specified by pname for program.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void ProgramParameter(UInt32 program, OpenTK.Graphics.ES20.All pname, Int32 value)
             {
                 #if DEBUG
                 using (new ErrorHelper(GraphicsContext.CurrentContext))
@@ -32516,6 +45679,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.All target, Int32 samples, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glRenderbufferStorageMultisampleEXT((OpenTK.Graphics.ES20.RenderbufferTarget)target, (Int32)samples, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_multisampled_render_to_texture]
+            /// Establish data storage, format, dimensions and sample count of a renderbuffer object's image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="samples">
+            /// <para>
+            /// Specifies the number of samples to be used for the renderbuffer object's storage.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the internal format to use for the renderbuffer object's image.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            public static 
             void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 samples, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -32593,6 +45797,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void TexStorage2D(OpenTK.Graphics.ES20.All target, Int32 levels, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glTexStorage2DEXT((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)levels, (OpenTK.Graphics.ES20.SizedInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_texture_storage]
+            /// Simultaneously specify storage for all levels of a two-dimensional or one-dimensional array texture
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specify the target of the operation. target must be one of GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_1D_ARRAY, GL_PROXY_TEXTURE_1D_ARRAY, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE, or GL_PROXY_TEXTURE_CUBE_MAP.
+            /// </para>
+            /// </param>
+            /// <param name="levels">
+            /// <para>
+            /// Specify the number of texture levels.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the sized internal format to be used to store texture image data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture, in texels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture, in texels.
+            /// </para>
+            /// </param>
+            public static 
             void TexStorage2D(OpenTK.Graphics.ES20.TextureTarget2d target, Int32 levels, OpenTK.Graphics.ES20.SizedInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -32600,6 +45845,52 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glTexStorage2DEXT((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)levels, (OpenTK.Graphics.ES20.SizedInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: EXT_texture_storage]
+            /// Simultaneously specify storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specify the target of the operation. target must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY, GL_PROXY_TEXTURE_2D_ARRAY, GL_TEXTURE_CUBE_ARRAY, or GL_PROXY_TEXTURE_CUBE_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="levels">
+            /// <para>
+            /// Specify the number of texture levels.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the sized internal format to be used to store texture image data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture, in texels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture, in texels.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture, in texels.
+            /// </para>
+            /// </param>
+            public static 
+            void TexStorage3D(OpenTK.Graphics.ES20.All target, Int32 levels, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glTexStorage3DEXT((OpenTK.Graphics.ES20.TextureTarget2d)target, (Int32)levels, (OpenTK.Graphics.ES20.SizedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth);
                 #if DEBUG
                 }
                 #endif
@@ -32988,6 +46279,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.All target, Int32 samples, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glRenderbufferStorageMultisampleIMG((OpenTK.Graphics.ES20.RenderbufferTarget)target, (Int32)samples, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: IMG_multisampled_render_to_texture]
+            /// Establish data storage, format, dimensions and sample count of a renderbuffer object's image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="samples">
+            /// <para>
+            /// Specifies the number of samples to be used for the renderbuffer object's storage.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the internal format to use for the renderbuffer object's image.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            public static 
             void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 samples, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -33166,6 +46498,310 @@ namespace OpenTK.Graphics.ES20
                 {
                     userParam_ptr.Free();
                 }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            public static 
+            void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, Int32[] ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* ids_ptr = ids)
+                    {
+                        Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            public static 
+            void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, ref Int32 ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* ids_ptr = &ids)
+                    {
+                        Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, Int32* ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids, (bool)enabled);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, UInt32[] ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt32* ids_ptr = ids)
+                    {
+                        Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, ref UInt32 ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (UInt32* ids_ptr = &ids)
+                    {
+                        Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids_ptr, (bool)enabled);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Control the reporting of debug messages in a debug context
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of debug messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// The length of the array ids.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers contianing the ids of the messages to enable or disable.
+            /// </para>
+            /// </param>
+            /// <param name="enabled">
+            /// <para>
+            /// A Boolean flag determining whether the selected messages should be enabled or disabled.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void DebugMessageControl(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, OpenTK.Graphics.ES20.All severity, Int32 count, UInt32* ids, bool enabled)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDebugMessageControlKHR((OpenTK.Graphics.ES20.DebugSourceControl)source, (OpenTK.Graphics.ES20.DebugTypeControl)type, (OpenTK.Graphics.ES20.DebugSeverityControl)severity, (Int32)count, (UInt32*)ids, (bool)enabled);
                 #if DEBUG
                 }
                 #endif
@@ -33509,6 +47145,99 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void DebugMessageInsert(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, Int32 id, OpenTK.Graphics.ES20.All severity, Int32 length, String buf)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDebugMessageInsertKHR((OpenTK.Graphics.ES20.DebugSourceExternal)source, (OpenTK.Graphics.ES20.DebugType)type, (UInt32)id, (OpenTK.Graphics.ES20.DebugSeverity)severity, (Int32)length, (String)buf);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Inject an application-supplied message into the debug message queue
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of the debug message to insert.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of the debug message insert.
+            /// </para>
+            /// </param>
+            /// <param name="id">
+            /// <para>
+            /// The user-supplied identifier of the message to insert.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of the debug messages to insert.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The length string contained in the character array whose address is given by message.
+            /// </para>
+            /// </param>
+            /// <param name="message">
+            /// <para>
+            /// The address of a character array containing the message to insert.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void DebugMessageInsert(OpenTK.Graphics.ES20.All source, OpenTK.Graphics.ES20.All type, UInt32 id, OpenTK.Graphics.ES20.All severity, Int32 length, String buf)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDebugMessageInsertKHR((OpenTK.Graphics.ES20.DebugSourceExternal)source, (OpenTK.Graphics.ES20.DebugType)type, (UInt32)id, (OpenTK.Graphics.ES20.DebugSeverity)severity, (Int32)length, (String)buf);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Inject an application-supplied message into the debug message queue
+            /// </summary>
+            /// <param name="source">
+            /// <para>
+            /// The source of the debug message to insert.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// The type of the debug message insert.
+            /// </para>
+            /// </param>
+            /// <param name="id">
+            /// <para>
+            /// The user-supplied identifier of the message to insert.
+            /// </para>
+            /// </param>
+            /// <param name="severity">
+            /// <para>
+            /// The severity of the debug messages to insert.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The length string contained in the character array whose address is given by message.
+            /// </para>
+            /// </param>
+            /// <param name="message">
+            /// <para>
+            /// The address of a character array containing the message to insert.
+            /// </para>
+            /// </param>
+            public static 
             void DebugMessageInsert(OpenTK.Graphics.ES20.DebugSourceExternal source, OpenTK.Graphics.ES20.DebugType type, Int32 id, OpenTK.Graphics.ES20.DebugSeverity severity, Int32 length, String buf)
             {
                 #if DEBUG
@@ -33563,6 +47292,201 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDebugMessageInsertKHR((OpenTK.Graphics.ES20.DebugSourceExternal)source, (OpenTK.Graphics.ES20.DebugType)type, (UInt32)id, (OpenTK.Graphics.ES20.DebugSeverity)severity, (Int32)length, (String)buf);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            public static 
+            Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All[] sources, [OutAttribute] OpenTK.Graphics.ES20.All[] types, [OutAttribute] Int32[] ids, [OutAttribute] OpenTK.Graphics.ES20.All[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* sources_ptr = sources)
+                    fixed (OpenTK.Graphics.ES20.All* types_ptr = types)
+                    fixed (Int32* ids_ptr = ids)
+                    fixed (OpenTK.Graphics.ES20.All* severities_ptr = severities)
+                    fixed (Int32* lengths_ptr = lengths)
+                    {
+                        return Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            public static 
+            Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] out OpenTK.Graphics.ES20.All sources, [OutAttribute] out OpenTK.Graphics.ES20.All types, [OutAttribute] out Int32 ids, [OutAttribute] out OpenTK.Graphics.ES20.All severities, [OutAttribute] out Int32 lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* sources_ptr = &sources)
+                    fixed (OpenTK.Graphics.ES20.All* types_ptr = &types)
+                    fixed (Int32* ids_ptr = &ids)
+                    fixed (OpenTK.Graphics.ES20.All* severities_ptr = &severities)
+                    fixed (Int32* lengths_ptr = &lengths)
+                    {
+                        Int32 retval = Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                        sources = *sources_ptr;
+                        types = *types_ptr;
+                        ids = *ids_ptr;
+                        severities = *severities_ptr;
+                        lengths = *lengths_ptr;
+                        return retval;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe Int32 GetDebugMessageLog(Int32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All* sources, [OutAttribute] OpenTK.Graphics.ES20.All* types, [OutAttribute] Int32* ids, [OutAttribute] OpenTK.Graphics.ES20.All* severities, [OutAttribute] Int32* lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources, (OpenTK.Graphics.ES20.DebugType*)types, (UInt32*)ids, (OpenTK.Graphics.ES20.DebugSeverity*)severities, (Int32*)lengths, (StringBuilder)messageLog);
                 #if DEBUG
                 }
                 #endif
@@ -33808,6 +47732,203 @@ namespace OpenTK.Graphics.ES20
             /// </param>
             [System.CLSCompliant(false)]
             public static 
+            Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All[] sources, [OutAttribute] OpenTK.Graphics.ES20.All[] types, [OutAttribute] UInt32[] ids, [OutAttribute] OpenTK.Graphics.ES20.All[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* sources_ptr = sources)
+                    fixed (OpenTK.Graphics.ES20.All* types_ptr = types)
+                    fixed (UInt32* ids_ptr = ids)
+                    fixed (OpenTK.Graphics.ES20.All* severities_ptr = severities)
+                    fixed (Int32* lengths_ptr = lengths)
+                    {
+                        return Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] out OpenTK.Graphics.ES20.All sources, [OutAttribute] out OpenTK.Graphics.ES20.All types, [OutAttribute] out UInt32 ids, [OutAttribute] out OpenTK.Graphics.ES20.All severities, [OutAttribute] out Int32 lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* sources_ptr = &sources)
+                    fixed (OpenTK.Graphics.ES20.All* types_ptr = &types)
+                    fixed (UInt32* ids_ptr = &ids)
+                    fixed (OpenTK.Graphics.ES20.All* severities_ptr = &severities)
+                    fixed (Int32* lengths_ptr = &lengths)
+                    {
+                        Int32 retval = Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources_ptr, (OpenTK.Graphics.ES20.DebugType*)types_ptr, (UInt32*)ids_ptr, (OpenTK.Graphics.ES20.DebugSeverity*)severities_ptr, (Int32*)lengths_ptr, (StringBuilder)messageLog);
+                        sources = *sources_ptr;
+                        types = *types_ptr;
+                        ids = *ids_ptr;
+                        severities = *severities_ptr;
+                        lengths = *lengths_ptr;
+                        return retval;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.All* sources, [OutAttribute] OpenTK.Graphics.ES20.All* types, [OutAttribute] UInt32* ids, [OutAttribute] OpenTK.Graphics.ES20.All* severities, [OutAttribute] Int32* lengths, [OutAttribute] StringBuilder messageLog)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources, (OpenTK.Graphics.ES20.DebugType*)types, (UInt32*)ids, (OpenTK.Graphics.ES20.DebugSeverity*)severities, (Int32*)lengths, (StringBuilder)messageLog);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve messages from the debug message log
+            /// </summary>
+            /// <param name="count">
+            /// <para>
+            /// The number of debug messages to retrieve from the log.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The size of the buffer whose address is given by messageLog.
+            /// </para>
+            /// </param>
+            /// <param name="sources">
+            /// <para>
+            /// The address of an array of variables to receive the sources of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="types">
+            /// <para>
+            /// The address of an array of variables to receive the types of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="ids">
+            /// <para>
+            /// The address of an array of unsigned integers to receive the ids of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="severities">
+            /// <para>
+            /// The address of an array of variables to receive the severites of the retrieved messages.
+            /// </para>
+            /// </param>
+            /// <param name="lengths">
+            /// <para>
+            /// The address of an array of variables to receive the lengths of the received messages.
+            /// </para>
+            /// </param>
+            /// <param name="messageLog">
+            /// <para>
+            /// The address of an array of characters that will receive the messages.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
             Int32 GetDebugMessageLog(UInt32 count, Int32 bufSize, [OutAttribute] OpenTK.Graphics.ES20.DebugSourceExternal[] sources, [OutAttribute] OpenTK.Graphics.ES20.DebugType[] types, [OutAttribute] UInt32[] ids, [OutAttribute] OpenTK.Graphics.ES20.DebugSeverity[] severities, [OutAttribute] Int32[] lengths, [OutAttribute] StringBuilder messageLog)
             {
                 #if DEBUG
@@ -33955,6 +48076,282 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 return Delegates.glGetDebugMessageLogKHR((UInt32)count, (Int32)bufSize, (OpenTK.Graphics.ES20.DebugSourceExternal*)sources, (OpenTK.Graphics.ES20.DebugType*)types, (UInt32*)ids, (OpenTK.Graphics.ES20.DebugSeverity*)severities, (Int32*)lengths, (StringBuilder)messageLog);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            public static 
+            void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = length)
+                    {
+                        Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            public static 
+            void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = &length)
+                    {
+                        Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                        length = *length_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length, (StringBuilder)label);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = length)
+                    {
+                        Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] out Int32 length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (Int32* length_ptr = &length)
+                    {
+                        Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length_ptr, (StringBuilder)label);
+                        length = *length_ptr;
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Retrieve the label of a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object whose label to retrieve.
+            /// </para>
+            /// </param>
+            /// <param name="bufSize">
+            /// <para>
+            /// The length of the buffer whose address is in label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The address of a variable to receive the length of the object label.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string that will receive the object label.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void GetObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 bufSize, [OutAttribute] Int32* length, [OutAttribute] StringBuilder label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)bufSize, (Int32*)length, (StringBuilder)label);
                 #if DEBUG
                 }
                 #endif
@@ -35088,6 +49485,79 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void ObjectLabel(OpenTK.Graphics.ES20.All identifier, Int32 name, Int32 length, String label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)length, (String)label);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Label a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object to label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The length of the label to be used for the object.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string containing the label to assign to the object.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            void ObjectLabel(OpenTK.Graphics.ES20.All identifier, UInt32 name, Int32 length, String label)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glObjectLabelKHR((OpenTK.Graphics.ES20.ObjectLabelIdentifier)identifier, (UInt32)name, (Int32)length, (String)label);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: KHR_debug]
+            /// Label a named object identified within a namespace
+            /// </summary>
+            /// <param name="identifier">
+            /// <para>
+            /// The namespace from which the name of the object is allocated.
+            /// </para>
+            /// </param>
+            /// <param name="name">
+            /// <para>
+            /// The name of the object to label.
+            /// </para>
+            /// </param>
+            /// <param name="length">
+            /// <para>
+            /// The length of the label to be used for the object.
+            /// </para>
+            /// </param>
+            /// <param name="label">
+            /// <para>
+            /// The address of a string containing the label to assign to the object.
+            /// </para>
+            /// </param>
+            public static 
             void ObjectLabel(OpenTK.Graphics.ES20.ObjectLabelIdentifier identifier, Int32 name, Int32 length, String label)
             {
                 #if DEBUG
@@ -35474,6 +49944,42 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void BlitFramebuffer(Int32 srcX0, Int32 srcY0, Int32 srcX1, Int32 srcY1, Int32 dstX0, Int32 dstY0, Int32 dstX1, Int32 dstY1, OpenTK.Graphics.ES20.All mask, OpenTK.Graphics.ES20.All filter)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glBlitFramebufferNV((Int32)srcX0, (Int32)srcY0, (Int32)srcX1, (Int32)srcY1, (Int32)dstX0, (Int32)dstY0, (Int32)dstX1, (Int32)dstY1, (OpenTK.Graphics.ES20.ClearBufferMask)mask, (OpenTK.Graphics.ES20.BlitFramebufferFilter)filter);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_framebuffer_blit]
+            /// Copy a block of pixels from the read framebuffer to the draw framebuffer
+            /// </summary>
+            /// <param name="srcX0">
+            /// <para>
+            /// Specify the bounds of the source rectangle within the read buffer of the read framebuffer.
+            /// </para>
+            /// </param>
+            /// <param name="dstX0">
+            /// <para>
+            /// Specify the bounds of the destination rectangle within the write buffer of the write framebuffer.
+            /// </para>
+            /// </param>
+            /// <param name="mask">
+            /// <para>
+            /// The bitwise OR of the flags indicating which buffers are to be copied. The allowed flags are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT and GL_STENCIL_BUFFER_BIT.
+            /// </para>
+            /// </param>
+            /// <param name="filter">
+            /// <para>
+            /// Specifies the interpolation to be applied if the image is stretched. Must be GL_NEAREST or GL_LINEAR.
+            /// </para>
+            /// </param>
+            public static 
             void BlitFramebuffer(Int32 srcX0, Int32 srcY0, Int32 srcX1, Int32 srcY1, Int32 dstX0, Int32 dstY0, Int32 dstX1, Int32 dstY1, OpenTK.Graphics.ES20.ClearBufferMask mask, OpenTK.Graphics.ES20.BlitFramebufferFilter filter)
             {
                 #if DEBUG
@@ -35481,6 +49987,47 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glBlitFramebufferNV((Int32)srcX0, (Int32)srcY0, (Int32)srcX1, (Int32)srcY1, (Int32)dstX0, (Int32)dstY0, (Int32)dstX1, (Int32)dstY1, (OpenTK.Graphics.ES20.ClearBufferMask)mask, (OpenTK.Graphics.ES20.BlitFramebufferFilter)filter);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_copy_buffer]
+            /// Copy part of the data store of a buffer object to the data store of another buffer object
+            /// </summary>
+            /// <param name="readtarget">
+            /// <para>
+            /// Specifies the target from whose data store data should be read.
+            /// </para>
+            /// </param>
+            /// <param name="writetarget">
+            /// <para>
+            /// Specifies the target to whose data store data should be written.
+            /// </para>
+            /// </param>
+            /// <param name="readoffset">
+            /// <para>
+            /// Specifies the offset, in basic machine units, within the data store of readtarget from which data should be read.
+            /// </para>
+            /// </param>
+            /// <param name="writeoffset">
+            /// <para>
+            /// Specifies the offset, in basic machine units, within the data store of writetarget to which data should be written.
+            /// </para>
+            /// </param>
+            /// <param name="size">
+            /// <para>
+            /// Specifies the size, in basic machine units, of the data to be copied from readtarget to writetarget.
+            /// </para>
+            /// </param>
+            public static 
+            void CopyBufferSubData(OpenTK.Graphics.ES20.All readTarget, OpenTK.Graphics.ES20.All writeTarget, IntPtr readOffset, IntPtr writeOffset, IntPtr size)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glCopyBufferSubDataNV((OpenTK.Graphics.ES20.BufferTarget)readTarget, (OpenTK.Graphics.ES20.BufferTarget)writeTarget, (IntPtr)readOffset, (IntPtr)writeOffset, (IntPtr)size);
                 #if DEBUG
                 }
                 #endif
@@ -35691,6 +50238,42 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void DrawArraysInstanced(OpenTK.Graphics.ES20.All mode, Int32 first, Int32 count, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawArraysInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a range of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES GL_LINES_ADJACENCY, GL_LINE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY, GL_TRIANGLE_STRIP_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="first">
+            /// <para>
+            /// Specifies the starting index in the enabled arrays.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of indices to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
             void DrawArraysInstanced(OpenTK.Graphics.ES20.PrimitiveType mode, Int32 first, Int32 count, Int32 primcount)
             {
                 #if DEBUG
@@ -35698,6 +50281,97 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDrawArraysInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)first, (Int32)count, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawBuffers(Int32 n, OpenTK.Graphics.ES20.All[] bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* bufs_ptr = bufs)
+                    {
+                        Delegates.glDrawBuffersNV((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawBuffers(Int32 n, ref OpenTK.Graphics.ES20.All bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                unsafe
+                {
+                    fixed (OpenTK.Graphics.ES20.All* bufs_ptr = &bufs)
+                    {
+                        Delegates.glDrawBuffersNV((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs_ptr);
+                    }
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_buffers]
+            /// Specifies a list of color buffers to be drawn into
+            /// </summary>
+            /// <param name="n">
+            /// <para>
+            /// Specifies the number of buffers in bufs.
+            /// </para>
+            /// </param>
+            /// <param name="bufs">
+            /// <para>
+            /// Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written.
+            /// </para>
+            /// </param>
+            [System.CLSCompliant(false)]
+            public static 
+            unsafe void DrawBuffers(Int32 n, OpenTK.Graphics.ES20.All* bufs)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawBuffersNV((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs);
                 #if DEBUG
                 }
                 #endif
@@ -35789,6 +50463,248 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glDrawBuffersNV((Int32)n, (OpenTK.Graphics.ES20.DrawBufferMode*)bufs);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, IntPtr indices, Int32 primcount)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glDrawElementsInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices, (Int32)primcount);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T3[,,] indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_draw_instanced]
+            /// Draw multiple instances of a set of elements
+            /// </summary>
+            /// <param name="mode">
+            /// <para>
+            /// Specifies what kind of primitives to render. Symbolic constants GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY, GL_TRIANGLES_ADJACENCY and GL_PATCHES are accepted.
+            /// </para>
+            /// </param>
+            /// <param name="count">
+            /// <para>
+            /// Specifies the number of elements to be rendered.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the type of the values in indices. Must be one of GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, or GL_UNSIGNED_INT.
+            /// </para>
+            /// </param>
+            /// <param name="indices">
+            /// <para>
+            /// Specifies a pointer to the location where the indices are stored.
+            /// </para>
+            /// </param>
+            /// <param name="primcount">
+            /// <para>
+            /// Specifies the number of instances of the specified range of indices to be rendered.
+            /// </para>
+            /// </param>
+            public static 
+            void DrawElementsInstanced<T3>(OpenTK.Graphics.ES20.All mode, Int32 count, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T3 indices, Int32 primcount)
+                where T3 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle indices_ptr = GCHandle.Alloc(indices, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glDrawElementsInstancedNV((OpenTK.Graphics.ES20.PrimitiveType)mode, (Int32)count, (OpenTK.Graphics.ES20.DrawElementsType)type, (IntPtr)indices_ptr.AddrOfPinnedObject(), (Int32)primcount);
+                    indices = (T3)indices_ptr.Target;
+                }
+                finally
+                {
+                    indices_ptr.Free();
+                }
                 #if DEBUG
                 }
                 #endif
@@ -36372,6 +51288,47 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.All target, Int32 samples, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glRenderbufferStorageMultisampleNV((OpenTK.Graphics.ES20.RenderbufferTarget)target, (Int32)samples, (OpenTK.Graphics.ES20.RenderbufferInternalFormat)internalformat, (Int32)width, (Int32)height);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: NV_framebuffer_multisample]
+            /// Establish data storage, format, dimensions and sample count of a renderbuffer object's image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies a binding to which the target of the allocation and must be GL_RENDERBUFFER.
+            /// </para>
+            /// </param>
+            /// <param name="samples">
+            /// <para>
+            /// Specifies the number of samples to be used for the renderbuffer object's storage.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the internal format to use for the renderbuffer object's image.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the renderbuffer, in pixels.
+            /// </para>
+            /// </param>
+            public static 
             void RenderbufferStorageMultisample(OpenTK.Graphics.ES20.RenderbufferTarget target, Int32 samples, OpenTK.Graphics.ES20.RenderbufferInternalFormat internalformat, Int32 width, Int32 height)
             {
                 #if DEBUG
@@ -36921,6 +51878,348 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void CompressedTexImage3D(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, IntPtr data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 16 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image. All implementations support 3D texture images that are at least 16 texels deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexImage3D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T8[] data)
+                where T8 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 16 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image. All implementations support 3D texture images that are at least 16 texels deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexImage3D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T8[,] data)
+                where T8 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 16 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image. All implementations support 3D texture images that are at least 16 texels deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexImage3D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] T8[,,] data)
+                where T8 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 16 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image. All implementations support 3D texture images that are at least 16 texels deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexImage3D<T8>(OpenTK.Graphics.ES20.All target, Int32 level, OpenTK.Graphics.ES20.All internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, [InAttribute, OutAttribute] ref T8 data)
+                where T8 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                    data = (T8)data_ptr.Target;
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalformat">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 16 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image. All implementations support 3D texture images that are at least 16 texels deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
             void CompressedTexImage3D(OpenTK.Graphics.ES20.TextureTarget3d target, Int32 level, OpenTK.Graphics.ES20.CompressedInternalFormat internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, Int32 imageSize, IntPtr data)
             {
                 #if DEBUG
@@ -37204,6 +52503,373 @@ namespace OpenTK.Graphics.ES20
                 {
                     Delegates.glCompressedTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (OpenTK.Graphics.ES20.CompressedInternalFormat)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
                     data = (T8)data_ptr.Target;
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexSubImage3D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, Int32 imageSize, IntPtr data)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glCompressedTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (Int32)imageSize, (IntPtr)data);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T10[] data)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T10[,] data)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] T10[,,] data)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    data_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage in a compressed format
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the compressed image data stored at address data.
+            /// </para>
+            /// </param>
+            /// <param name="imageSize">
+            /// <para>
+            /// Specifies the number of unsigned bytes of image data starting at the address specified by data.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the compressed image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void CompressedTexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, Int32 imageSize, [InAttribute, OutAttribute] ref T10 data)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle data_ptr = GCHandle.Alloc(data, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glCompressedTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (Int32)imageSize, (IntPtr)data_ptr.AddrOfPinnedObject());
+                    data = (T10)data_ptr.Target;
                 }
                 finally
                 {
@@ -37576,6 +53242,62 @@ namespace OpenTK.Graphics.ES20
                 {
                     data_ptr.Free();
                 }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Copy a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="x">
+            /// <para>
+            /// Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            public static 
+            void CopyTexSubImage3D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 x, Int32 y, Int32 width, Int32 height)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glCopyTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)x, (Int32)y, (Int32)width, (Int32)height);
                 #if DEBUG
                 }
                 #endif
@@ -38059,6 +53781,113 @@ namespace OpenTK.Graphics.ES20
                 {
                 #endif
                 Delegates.glGenVertexArraysOES((Int32)n, (UInt32*)arrays);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            void GetBufferPointer(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [OutAttribute] IntPtr @params)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glGetBufferPointervOES((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferPointer)pname, (IntPtr)@params);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            void GetBufferPointer<T2>(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[] @params)
+                where T2 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glGetBufferPointervOES((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferPointer)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    @params_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            void GetBufferPointer<T2>(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,] @params)
+                where T2 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glGetBufferPointervOES((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferPointer)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    @params_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            void GetBufferPointer<T2>(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] T2[,,] @params)
+                where T2 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glGetBufferPointervOES((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferPointer)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    @params_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            void GetBufferPointer<T2>(OpenTK.Graphics.ES20.All target, OpenTK.Graphics.ES20.All pname, [InAttribute, OutAttribute] ref T2 @params)
+                where T2 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle @params_ptr = GCHandle.Alloc(@params, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glGetBufferPointervOES((OpenTK.Graphics.ES20.BufferTarget)target, (OpenTK.Graphics.ES20.BufferPointer)pname, (IntPtr)@params_ptr.AddrOfPinnedObject());
+                    @params = (T2)@params_ptr.Target;
+                }
+                finally
+                {
+                    @params_ptr.Free();
+                }
                 #if DEBUG
                 }
                 #endif
@@ -40365,6 +56194,373 @@ namespace OpenTK.Graphics.ES20
             /// </para>
             /// </param>
             public static 
+            void TexImage3D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, IntPtr pixels)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level is the n sup th mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalFormat">
+            /// <para>
+            /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 256 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image, or the number of layers in a texture array. All implementations support 3D texture images that are at least 256 texels deep, and texture arrays that are at least 256 layers deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexImage3D<T9>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T9[] pixels)
+                where T9 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level is the n sup th mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalFormat">
+            /// <para>
+            /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 256 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image, or the number of layers in a texture array. All implementations support 3D texture images that are at least 256 texels deep, and texture arrays that are at least 256 layers deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexImage3D<T9>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T9[,] pixels)
+                where T9 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level is the n sup th mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalFormat">
+            /// <para>
+            /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 256 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image, or the number of layers in a texture array. All implementations support 3D texture images that are at least 256 texels deep, and texture arrays that are at least 256 layers deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexImage3D<T9>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T9[,,] pixels)
+                where T9 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level is the n sup th mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalFormat">
+            /// <para>
+            /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 256 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image, or the number of layers in a texture array. All implementations support 3D texture images that are at least 256 texels deep, and texture arrays that are at least 256 layers deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexImage3D<T9>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T9 pixels)
+                where T9 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                    pixels = (T9)pixels_ptr.Target;
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture image
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be one of GL_TEXTURE_3D, GL_PROXY_TEXTURE_3D, GL_TEXTURE_2D_ARRAY or GL_PROXY_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level is the n sup th mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="internalFormat">
+            /// <para>
+            /// Specifies the number of color components in the texture. Must be one of base internal formats given in Table 1, one of the sized internal formats given in Table 2, or one of the compressed internal formats given in Table 3, below.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture image. All implementations support 3D texture images that are at least 16 texels wide.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture image. All implementations support 3D texture images that are at least 256 texels high.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture image, or the number of layers in a texture array. All implementations support 3D texture images that are at least 256 texels deep, and texture arrays that are at least 256 layers deep.
+            /// </para>
+            /// </param>
+            /// <param name="border">
+            /// <para>
+            /// This value must be 0.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_BGRA, GL_RED_INTEGER, GL_RG_INTEGER, GL_RGB_INTEGER, GL_BGR_INTEGER, GL_RGBA_INTEGER, GL_BGRA_INTEGER, GL_STENCIL_INDEX, GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
             void TexImage3D(OpenTK.Graphics.ES20.TextureTarget3d target, Int32 level, Int32 internalformat, Int32 width, Int32 height, Int32 depth, Int32 border, OpenTK.Graphics.ES20.PixelFormat format, OpenTK.Graphics.ES20.PixelType type, IntPtr pixels)
             {
                 #if DEBUG
@@ -40668,6 +56864,398 @@ namespace OpenTK.Graphics.ES20
                 {
                     Delegates.glTexImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)internalformat, (Int32)width, (Int32)height, (Int32)depth, (Int32)border, (OpenTK.Graphics.ES20.PixelFormat)format, (OpenTK.Graphics.ES20.PixelType)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
                     pixels = (T9)pixels_ptr.Target;
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexSubImage3D(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, IntPtr pixels)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                Delegates.glTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (OpenTK.Graphics.ES20.All)type, (IntPtr)pixels);
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T10[] pixels)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (OpenTK.Graphics.ES20.All)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T10[,] pixels)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (OpenTK.Graphics.ES20.All)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] T10[,,] pixels)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (OpenTK.Graphics.ES20.All)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    pixels_ptr.Free();
+                }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_texture_3D]
+            /// Specify a three-dimensional texture subimage
+            /// </summary>
+            /// <param name="target">
+            /// <para>
+            /// Specifies the target texture. Must be GL_TEXTURE_3D or GL_TEXTURE_2D_ARRAY.
+            /// </para>
+            /// </param>
+            /// <param name="level">
+            /// <para>
+            /// Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap reduction image.
+            /// </para>
+            /// </param>
+            /// <param name="xoffset">
+            /// <para>
+            /// Specifies a texel offset in the x direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="yoffset">
+            /// <para>
+            /// Specifies a texel offset in the y direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="zoffset">
+            /// <para>
+            /// Specifies a texel offset in the z direction within the texture array.
+            /// </para>
+            /// </param>
+            /// <param name="width">
+            /// <para>
+            /// Specifies the width of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="height">
+            /// <para>
+            /// Specifies the height of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="depth">
+            /// <para>
+            /// Specifies the depth of the texture subimage.
+            /// </para>
+            /// </param>
+            /// <param name="format">
+            /// <para>
+            /// Specifies the format of the pixel data. The following symbolic values are accepted: GL_RED, GL_RG, GL_RGB, GL_BGR, GL_RGBA, GL_DEPTH_COMPONENT, and GL_STENCIL_INDEX.
+            /// </para>
+            /// </param>
+            /// <param name="type">
+            /// <para>
+            /// Specifies the data type of the pixel data. The following symbolic values are accepted: GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_FLOAT, GL_UNSIGNED_BYTE_3_3_2, GL_UNSIGNED_BYTE_2_3_3_REV, GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_5_6_5_REV, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_4_4_4_4_REV, GL_UNSIGNED_SHORT_5_5_5_1, GL_UNSIGNED_SHORT_1_5_5_5_REV, GL_UNSIGNED_INT_8_8_8_8, GL_UNSIGNED_INT_8_8_8_8_REV, GL_UNSIGNED_INT_10_10_10_2, and GL_UNSIGNED_INT_2_10_10_10_REV.
+            /// </para>
+            /// </param>
+            /// <param name="data">
+            /// <para>
+            /// Specifies a pointer to the image data in memory.
+            /// </para>
+            /// </param>
+            public static 
+            void TexSubImage3D<T10>(OpenTK.Graphics.ES20.All target, Int32 level, Int32 xoffset, Int32 yoffset, Int32 zoffset, Int32 width, Int32 height, Int32 depth, OpenTK.Graphics.ES20.All format, OpenTK.Graphics.ES20.All type, [InAttribute, OutAttribute] ref T10 pixels)
+                where T10 : struct
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                GCHandle pixels_ptr = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                try
+                {
+                    Delegates.glTexSubImage3DOES((OpenTK.Graphics.ES20.TextureTarget3d)target, (Int32)level, (Int32)xoffset, (Int32)yoffset, (Int32)zoffset, (Int32)width, (Int32)height, (Int32)depth, (OpenTK.Graphics.ES20.All)format, (OpenTK.Graphics.ES20.All)type, (IntPtr)pixels_ptr.AddrOfPinnedObject());
+                    pixels = (T10)pixels_ptr.Target;
                 }
                 finally
                 {
@@ -41065,6 +57653,20 @@ namespace OpenTK.Graphics.ES20
                 {
                     pixels_ptr.Free();
                 }
+                #if DEBUG
+                }
+                #endif
+            }
+
+            /// <summary>[requires: OES_mapbuffer]</summary>
+            public static 
+            bool UnmapBuffer(OpenTK.Graphics.ES20.All target)
+            {
+                #if DEBUG
+                using (new ErrorHelper(GraphicsContext.CurrentContext))
+                {
+                #endif
+                return Delegates.glUnmapBufferOES((OpenTK.Graphics.ES20.BufferTarget)target);
                 #if DEBUG
                 }
                 #endif
