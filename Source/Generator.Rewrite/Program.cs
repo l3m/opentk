@@ -34,14 +34,17 @@ namespace OpenTK.Rewrite
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Usage: rewrite [file.dll] [file.snk]");
+                Console.WriteLine("Usage: rewrite [file.dll] [file.snk] [options]");
+                Console.WriteLine("[options] is:");
+                Console.WriteLine("    -debug (enable calls to GL.GetError())");
                 return;
             }
 
             var program = new Program();
             var file = args[0];
-            var key = args.Length >= 2 ? args[1] : null;
-            program.Rewrite(file, key);
+            var key = args[1];
+            var options = args.Where(a => a.StartsWith("-") || a.StartsWith("/"));
+            program.Rewrite(file, key, options);
         }
 
         // mscorlib types
@@ -55,7 +58,7 @@ namespace OpenTK.Rewrite
         // OpenTK.BindingsBase
         static TypeDefinition TypeBindingsBase;
 
-        void Rewrite(string file, string keyfile)
+        void Rewrite(string file, string keyfile, IEnumerable<string> options)
         {
             // Specify assembly read and write parameters
             // We want to keep a valid symbols file (pdb or mdb)
@@ -123,7 +126,7 @@ namespace OpenTK.Rewrite
                 {
                     foreach (var type in module.Types)
                     {
-                        Rewrite(type);
+                        Rewrite(type, options);
                     }
                 }
             }
@@ -136,7 +139,7 @@ namespace OpenTK.Rewrite
             assembly.Write(file, write_params);
         }
 
-        void Rewrite(TypeDefinition type)
+        void Rewrite(TypeDefinition type, IEnumerable<string> options)
         {
             var entry_points = type.Fields.FirstOrDefault(f => f.Name == "EntryPoints");
             if (entry_points != null)
@@ -146,7 +149,7 @@ namespace OpenTK.Rewrite
                 entry_signatures.AddRange(type.Methods
                     .Where(t => t.CustomAttributes.Any(a => a.AttributeType.Name == "SlotAttribute")));
 
-                Rewrite(type, entry_points, entry_signatures);
+                Rewrite(type, entry_points, entry_signatures, options);
 
                 RemoveNativeSignatures(type, entry_signatures);
             }
@@ -162,7 +165,7 @@ namespace OpenTK.Rewrite
         }
 
         void Rewrite(TypeDefinition type, FieldDefinition entry_points,
-            List<MethodDefinition> entry_signatures)
+            List<MethodDefinition> entry_signatures, IEnumerable<string> options)
         {
             // Rewrite all wrapper methods
             var wrapper_signatures = new List<MethodDefinition>();
@@ -182,7 +185,7 @@ namespace OpenTK.Rewrite
                         .First(a => a.AttributeType.Name == "SlotAttribute")
                         .ConstructorArguments[0].Value;
 
-                    ProcessMethod(wrapper, signature, slot, entry_points);
+                    ProcessMethod(wrapper, signature, slot, entry_points, options);
                 }
             }
 
@@ -192,7 +195,7 @@ namespace OpenTK.Rewrite
             {
                 foreach (var nested_type in type.NestedTypes)
                 {
-                    Rewrite(nested_type, entry_points, entry_signatures);
+                    Rewrite(nested_type, entry_points, entry_signatures, options);
                 }
             }
         }
@@ -223,7 +226,8 @@ namespace OpenTK.Rewrite
         }
 
         // Create body for method
-        static void ProcessMethod(MethodDefinition wrapper, MethodDefinition native, int slot, FieldDefinition entry_points)
+        static void ProcessMethod(MethodDefinition wrapper, MethodDefinition native, int slot,
+            FieldDefinition entry_points, IEnumerable<string> options)
         {
             var body = wrapper.Body;
             var il = body.GetILProcessor();
@@ -242,6 +246,11 @@ namespace OpenTK.Rewrite
             {
                 int difference = native.Parameters.Count - wrapper.Parameters.Count;
                 EmitConvenienceWrapper(wrapper, native, difference, body, il);
+            }
+
+            if (options.Contains("-debug"))
+            {
+                EmitDebugPrologue(wrapper, il);
             }
 
             // push the entry point address on the stack
@@ -267,6 +276,11 @@ namespace OpenTK.Rewrite
                 EmitStringEpilogue(wrapper, body, il);
             }
 
+            if (options.Contains("-debug"))
+            {
+                EmitDebugEpilogue(wrapper, il);
+            }
+
             // return
             il.Emit(OpCodes.Ret);
 
@@ -277,6 +291,19 @@ namespace OpenTK.Rewrite
                 body.InitLocals = true;
             }
             body.OptimizeMacros();
+        }
+
+        static void EmitDebugPrologue(MethodDefinition wrapper, ILProcessor il)
+        {
+            var helper = wrapper.Module.GetType(wrapper.DeclaringType.Namespace, "ErrorHelper");
+            il.Emit(OpCodes.Newobj, helper);
+        }
+
+        static void EmitDebugEpilogue(MethodDefinition wrapper, ILProcessor il)
+        {
+            var helper = wrapper.Module.GetType(wrapper.DeclaringType.Namespace, "ErrorHelper");
+            var dispose = helper.GetMethods().First(m => m.Name == "Dispose");
+            il.Emit(OpCodes.Callvirt, dispose);
         }
 
         private static void EmitReturnTypeWrapper(MethodDefinition wrapper, MethodDefinition native, MethodBody body, ILProcessor il)
